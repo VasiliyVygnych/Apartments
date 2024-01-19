@@ -7,5 +7,7 @@ target 'Apartments' do
 
   # Pods for Apartments
 pod 'SnapKit', '~> 5.0.1'
-pod 'Kingfisher', '~> 7.0'
+pod 'SDWebImage', '~> 5.2'
+# pod 'Kingfisher', '~> 7.0'
+
 end

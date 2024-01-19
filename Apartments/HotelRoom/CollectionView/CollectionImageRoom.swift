@@ -7,7 +7,7 @@
 
 import UIKit
 import SnapKit
-import Kingfisher
+import SDWebImage
 
 class CollectionImageRoom: UIView {
     
@@ -95,11 +95,11 @@ extension CollectionImageRoom: UICollectionViewDataSource, UICollectionViewDeleg
         guard let images = model?.imageUrls else { return UICollectionViewCell() }
         let url = URL(string: images[indexPath.row])
         
-        cell.imageView.kf.indicatorType = .activity
-        cell.imageView.kf.setImage(with: url,
-                                   placeholder: UIImage(named: "AppIcon"))
-        padeControl.numberOfPages = model?.imageUrls.count ?? 0
         
+        
+        cell.imageView.sd_setImage(with: url,
+                                   placeholderImage: UIImage(named: "AppIcon"))
+        padeControl.numberOfPages = model?.imageUrls.count ?? 0
         return cell
     }
     func collectionView(_ collectionView: UICollectionView,
