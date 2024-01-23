@@ -17,7 +17,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Вылет из"
+        label.text = Constants.Text.labelFrom
         return label
     }()
     private var labelIn: UILabel = {
@@ -26,7 +26,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Страна, город"
+        label.text = Constants.Text.labelIn
         return label
     }()
     private var labelData: UILabel = {
@@ -35,7 +35,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Даты"
+        label.text = Constants.Text.labelData
         return label
     }()
     private var numberOfNights: UILabel = {
@@ -44,7 +44,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Кол-во ночей"
+        label.text = Constants.Text.numberOfNights
         return label
     }()
     private var hotelLabel: UILabel = {
@@ -53,7 +53,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Отель"
+        label.text = Constants.Text.hotelLabel
         return label
     }()
      var roomLabel: UILabel = {
@@ -62,7 +62,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Номер"
+         label.text = Constants.Text.roomLabel
         return label
     }()
     private var foodLabel: UILabel = {
@@ -71,7 +71,7 @@ class InfoView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Питание"
+        label.text = Constants.Text.foodLabel
         return label
     }()
     var countrylabel: UILabel = {

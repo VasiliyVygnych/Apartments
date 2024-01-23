@@ -28,7 +28,7 @@ class BookingRoomViewController: UIViewController {
         return scrollView
     }()
 //MARK: - UIStackView
-    var stackView: UIStackView = {
+    private var stackView: UIStackView = {
        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
@@ -81,7 +81,7 @@ class BookingRoomViewController: UIViewController {
         view.layer.cornerRadius = 12
         return view
     }()
-    var touristView: UIView = {
+    private var touristView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 10
@@ -101,13 +101,13 @@ class BookingRoomViewController: UIViewController {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.text = "Добавить туриста"
+        label.text = Constants.Text.labelAddTourist
         label.font = .sFProDisplay(ofSize: 22,
                                    weight: .regular)
         return label
     }()
 //MARK: - button
-     var paymentButton: UIButton = {
+    private var paymentButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white,
@@ -121,19 +121,34 @@ class BookingRoomViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "plus"),
                                   for: .normal)
-        button.backgroundColor = UIColor(named: "primaryButtons")
         button.layer.cornerRadius = 6
         return button
     }()
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Бронирование"
+        title = Constants.Text.navTitleBooking
         presenter?.viewDidLoad()
         setupeView()
         setupeConstraint()
         setupeButton()
         setupeBackButoon()
+        setPresenter()
+//        buttonIsActiveted()
+    }
+//MARK: - buttonIsActive
+    private func buttonIsActiveted() {
+        paymentButton.backgroundColor = UIColor(named: "primaryButtons3")
+        paymentButton.isUserInteractionEnabled = false
+        presenter?.updateView = {
+            self.paymentButton.backgroundColor = UIColor(named: "primaryButtons")
+            self.paymentButton.isUserInteractionEnabled = true
+        }
+    }
+//MARK: - set presenter for custom views
+    private func setPresenter() {
+        self.infoBuyerView.presenter = presenter
+        self.addTouristView.presenter = presenter
     }
 //MARK: - setupeBackButoon
     private func setupeBackButoon() {
@@ -177,18 +192,18 @@ class BookingRoomViewController: UIViewController {
         }
         switch sender.tag {
         case 1: if sender.tag == 1 {
-            stack.touristLabel.text = "Второй турист"
+            stack.touristLabel.text = Constants.Text.secondTourist
         }
         case 2: if sender.tag == 2 {
-            stack.touristLabel.text = "Третий турист"
+            stack.touristLabel.text = Constants.Text.thirdTourist
         }
         case 3: if sender.tag == 3 {
-            stack.touristLabel.text = "Четвертый турист"
+            stack.touristLabel.text = Constants.Text.fourthtTourist
         }
         case 4: if sender.tag == 4 {
-            stack.touristLabel.text = "Пятый турист"
+            stack.touristLabel.text = Constants.Text.fifthtTourist
             addNewTouristButton.isHidden = true
-            labelAddTourist.text = "Максимальное количество туристов"
+            labelAddTourist.text = Constants.Text.maxTourist
             labelAddTourist.textColor = .red
         }
         default:
@@ -286,6 +301,8 @@ class BookingRoomViewController: UIViewController {
         }
     }
 }
+
+//MARK: - extension BookingViewProtocol
 extension BookingRoomViewController: BookingViewProtocol {
     func dataSet(model: BookimgModel) {
         guard let roomModel = self.roomModel else { return }
@@ -293,7 +310,7 @@ extension BookingRoomViewController: BookingViewProtocol {
         let fuelCharge = model.fuelCharge
         let serviceCharge = model.serviceCharge
         let totalCost = (tourPrice + fuelCharge + serviceCharge)
-        self.buttonLabel.text = "Оплатить \(totalCost)"
+        self.buttonLabel.text = "\(Constants.Text.paymentLabel) \(totalCost)"
         self.infoHotelView.configures(model: model)
         self.infoView.configures(model: model,
                                  room: roomModel)

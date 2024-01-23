@@ -53,7 +53,7 @@ class TableViewCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "primaryButtons")
-         label.text = "Подробнее о номере"
+        label.text = Constants.Text.moreButtonLabel
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
         return label
@@ -92,7 +92,7 @@ class TableViewCell: UITableViewCell {
     var cellButton: UIButton = {
       let button = UIButton()
        button.translatesAutoresizingMaskIntoConstraints = false
-       button.setTitle("Выбрать номер",
+        button.setTitle(Constants.Text.setupeButtonCell,
                        for: .normal)
        button.setTitleColor(.white,
                             for: .normal)

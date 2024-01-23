@@ -20,7 +20,6 @@ protocol HotelRoomPresenterProtocol {
     var coordinator: AppCoordinatorProtocol? { get set }
 
     func viewDidLoad()
-    func goBookingRoomView()
     func goBookingRoomView(model: Room)
 }
 
@@ -36,6 +35,4 @@ protocol HotelRoomInteractorInputProtocol {
 protocol HotelRoomInteractorOutputProtocol {
     func dataForTheView(model: [Room])
     func getHotelData(model: HotelModel)
-    
 }
-

@@ -35,7 +35,10 @@ class CollectionImageRoom: UIView {
         collectionView.isPagingEnabled = true
         return collectionView
     }()
-//MARK: - padeControl
+    
+    
+    
+//MARK: - UIPageControl
      var padeControl: UIPageControl = {
        let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
@@ -46,6 +49,9 @@ class CollectionImageRoom: UIView {
         page.backgroundColor = UIColor(named: "textGrey")
         return page
     }()
+    
+    
+//MARK: - init
     init() {
         super.init(frame: .zero)
         initialization()
@@ -90,18 +96,19 @@ extension CollectionImageRoom: UICollectionViewDataSource, UICollectionViewDeleg
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "viewCell",
                                                       for: indexPath) as! ImageCollectionView
-        
-
         guard let images = model?.imageUrls else { return UICollectionViewCell() }
         let url = URL(string: images[indexPath.row])
-        
-        
-        
         cell.imageView.sd_setImage(with: url,
                                    placeholderImage: UIImage(named: "AppIcon"))
+        
+        
+        
+        
+        
         padeControl.numberOfPages = model?.imageUrls.count ?? 0
         return cell
     }
+//MARK: - willDisplay
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {

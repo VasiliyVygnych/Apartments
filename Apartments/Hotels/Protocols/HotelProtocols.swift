@@ -31,6 +31,5 @@ protocol HotelInteractorInputProtocol {
 
 protocol HotelInteractorOutputProtocol {
     func dataForTheView(model: HotelModel)
-    
 }
 

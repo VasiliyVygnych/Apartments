@@ -9,6 +9,8 @@ import Foundation
 
 class Network: NetworkProtocol {
     
+    var parser: ParserProtocol?
+    
 //MARK: - request
     func request(urlString: String,
                  completion: @escaping ( Result <Data, Error>) -> Void) {
@@ -27,12 +29,11 @@ class Network: NetworkProtocol {
 //MARK: - hotelfetchData
     func hotelfetchData(completion: @escaping (HotelModel?) -> Void) {
         let urlString = "https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473"
-        request(urlString: urlString) { (result)  in
+        request(urlString: urlString) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 do {
-                    let model = try JSONDecoder().decode(HotelModel.self,
-                                                         from: data)
+                    let model = try self?.parser?.parseHotelModel(data)
                     completion(model)
                 } catch let jsonError {
                     print("ERROR", jsonError)
@@ -47,12 +48,11 @@ class Network: NetworkProtocol {
 //MARK: - roomfetchData
     func roomfetchData(completion: @escaping (RoomModel?) -> Void) {
         let urlString = "https://run.mocky.io/v3/8b532701-709e-4194-a41c-1a903af00195"
-        request(urlString: urlString) { (result)  in
+        request(urlString: urlString) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 do {
-                    let model = try JSONDecoder().decode(RoomModel.self,
-                                                         from: data)
+                    let model = try self?.parser?.parseRoomModel(data)
                     completion(model)
                 } catch let jsonError {
                     print("ERROR", jsonError)
@@ -67,12 +67,11 @@ class Network: NetworkProtocol {
 //MARK: - bookingfetchData
     func bookingfetchData(completion: @escaping (BookimgModel?) -> Void) {
         let urlString = "https://run.mocky.io/v3/63866c74-d593-432c-af8e-f279d1a8d2ff"
-        request(urlString: urlString) { (result)  in
+        request(urlString: urlString) { [weak self] (result)  in
             switch result {
             case .success(let data):
                 do {
-                    let model = try JSONDecoder().decode(BookimgModel.self,
-                                                         from: data)
+                    let model = try self?.parser?.parseBookingModel(data)
                     completion(model)
                 } catch let jsonError {
                     print("ERROR", jsonError)
@@ -84,5 +83,4 @@ class Network: NetworkProtocol {
             }
         }
     }
-    
 }

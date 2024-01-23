@@ -10,8 +10,8 @@ import SnapKit
 
 class NewTourustView: UIStackView {
     private var newView: [UIView] = []
+    var presenter: BookingPresenterProtocol?
 
-    let userDefaults = UserDefaults.standard
 //MARK: - UIView
     var contentView: UIView = {
        let view = UIView()
@@ -38,7 +38,7 @@ class NewTourustView: UIStackView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-         label.text = "Пeрвый турист"
+         label.text = Constants.Text.firstTourist
         label.font = .systemFont(ofSize: 22, weight: .regular)
         return label
     }()
@@ -47,7 +47,7 @@ class NewTourustView: UIStackView {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
-         textField.placeholder = "Имя"
+         textField.placeholder = Constants.Text.firstName
         textField.borderStyle = .roundedRect
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
@@ -58,7 +58,7 @@ class NewTourustView: UIStackView {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
-        textField.placeholder = "Фамилия"
+         textField.placeholder = Constants.Text.surName
         textField.borderStyle = .roundedRect
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
@@ -71,7 +71,7 @@ class NewTourustView: UIStackView {
          textField.layer.cornerRadius = 10
          textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
-         textField.placeholder = "Дата рождения"
+         textField.placeholder = Constants.Text.dateOfBirth
          textField.borderStyle = .roundedRect
          textField.keyboardType = .numberPad
          textField.backgroundColor = UIColor(named: "backgroundGray")
@@ -81,7 +81,7 @@ class NewTourustView: UIStackView {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
-         textField.placeholder = "Гражданство"
+         textField.placeholder = Constants.Text.citizenship
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
         textField.borderStyle = .roundedRect
@@ -90,12 +90,12 @@ class NewTourustView: UIStackView {
     }()
      var passportNumber: UITextField = {
        let textField = UITextField()
-        textField.placeholder = "Номер телефона"
+         textField.placeholder = Constants.Text.numberTexField
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
-        textField.placeholder = "Номер загран паспорта"
+         textField.placeholder = Constants.Text.passportNumber
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
         textField.backgroundColor = UIColor(named: "backgroundGray")
@@ -107,7 +107,7 @@ class NewTourustView: UIStackView {
         textField.layer.cornerRadius = 10
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
-         textField.placeholder = "Срок действия загран паспорта"
+         textField.placeholder = Constants.Text.validityPeriod
         textField.borderStyle = .roundedRect
          textField.keyboardType = .numberPad
         textField.backgroundColor = UIColor(named: "backgroundGray")
@@ -132,7 +132,7 @@ class NewTourustView: UIStackView {
         self.axis = .vertical
         self.layer.cornerRadius = 15
         button.addTarget(self,
-                         action: #selector(tap),
+                         action: #selector(showHiddenView),
                          for: .touchUpInside)
         contentView.isHidden = true
         newView.append(contentView)
@@ -140,7 +140,8 @@ class NewTourustView: UIStackView {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    @objc func tap() {
+//MARK: - @objc func showHiddenView
+    @objc func showHiddenView() {
         currentBackgroundImage()
         newView.forEach { buttom in
             UIView.animate(withDuration: 0.1) {
@@ -253,38 +254,49 @@ extension NewTourustView: UITextFieldDelegate {
             let mask = "**-**-****"
             dateOfBirth.text = "".addingMask(value: newString,
                                              mask: mask)
-            if newString.count > 9 {
-                print("dateOfBirth \(newString)")
-            }
+            presenter?.validateCount(text: newString,
+                                     textField: dateOfBirth,
+                                     minimumCount: 10)
         }
         if textField == passportNumber {
             let mask = "****-******"
             passportNumber.text = "".addingMask(value: newString,
                                                 mask: mask)
-            if newString.count > 11 {
-                print("passportNumber \(newString)")
-            }
+            presenter?.validateCount(text: newString,
+                                     textField: passportNumber,
+                                     minimumCount: 11)
         }
         if textField == validityPeriod {
             let mask = "**-**-****"
             validityPeriod.text = "".addingMask(value: newString,
                                                 mask: mask)
-            if newString.count > 10 {
-                print("validityPeriod \(newString)")
-            }
+            presenter?.validateCount(text: newString,
+                                     textField: validityPeriod,
+                                     minimumCount: 10)
         }
         if textField == firstName {
             firstName.text = newString
-            print("firstName \(newString)")
+            presenter?.validateCount(text: newString,
+                                     textField: firstName,
+                                     minimumCount: 2)
         }
         if textField == surName {
             surName.text = newString
-            print("surName \(newString)")
+            presenter?.validateCount(text: newString,
+                                     textField: surName,
+                                     minimumCount: 2)
         }
         if textField == citizenship {
             citizenship.text = newString
-            print("citizenship \(newString)")
+            presenter?.validateCount(text: newString,
+                                     textField: citizenship,
+                                     minimumCount: 2)
         }
         return false
+    }
+//MARK: - textFieldShouldReturn
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

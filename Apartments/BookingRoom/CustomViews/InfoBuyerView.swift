@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 class InfoBuyerView: UIView {
+    
+    var presenter: BookingPresenterProtocol?
 
 //MARK: - UILabel
     private var infoBuyerLabel: UILabel = {
@@ -17,7 +19,7 @@ class InfoBuyerView: UIView {
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: 25,
                                    weight: .regular)
-        label.text = "Информация о покупателе"
+        label.text = Constants.Text.infoBuyerLabel
         return label
     }()
     private var orderLabel: UILabel = {
@@ -28,23 +30,23 @@ class InfoBuyerView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 14,
                                    weight: .light)
-        label.text = "Эти данные никому не передаются. После оплаты мы вышлем чек на указанный вами номер и почту"
+        label.text = Constants.Text.orderLabel
         return label
     }()
 //MARK: - UITextField
-    var numberTexField: UITextField = {
+   private var numberTexField: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
-        textField.placeholder = "Номер телефона"
+        textField.placeholder = Constants.Text.numberTexField
         textField.borderStyle = .roundedRect
-        textField.keyboardType = .namePhonePad
+        textField.keyboardType = .numberPad
         textField.font = .sFProDisplay(ofSize:
                                         17, weight: .light)
         textField.backgroundColor = UIColor(named: "backgroundGray")
         return textField
     }()
-    var emailTexField: UITextField = {
+    private var emailTexField: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.layer.cornerRadius = 10
@@ -52,7 +54,7 @@ class InfoBuyerView: UIView {
         textField.keyboardType = .emailAddress
         textField.font = .sFProDisplay(ofSize: 17,
                                        weight: .light)
-        textField.placeholder = "Почта"
+        textField.placeholder = Constants.Text.emailTexField
         textField.backgroundColor = UIColor(named: "backgroundGray")
         return textField
     }()
@@ -61,6 +63,7 @@ class InfoBuyerView: UIView {
         super.init(frame: .zero)
         initialization()
         setupeConstraint()
+        setupeTextfield()
         self.backgroundColor = .white
         self.layer.cornerRadius = 15
     }
@@ -75,11 +78,14 @@ private extension InfoBuyerView {
         self.addSubview(orderLabel)
         self.addSubview(numberTexField)
         self.addSubview(emailTexField)
+    }
+//MARK: - setupeTextfield
+    func setupeTextfield() {
         numberTexField.delegate = self
         emailTexField.delegate = self
         numberTexField.text = "+7 (***) ***-**-**"
     }
-    //MARK: - setupeConstraint
+//MARK: - setupeConstraint
     func setupeConstraint() {
         infoBuyerLabel.snp.makeConstraints { make in
             make.top.equalTo(16)
@@ -116,15 +122,21 @@ extension InfoBuyerView: UITextFieldDelegate {
             let mask = "+* (***) ***-**-**"
             numberTexField.text = "".addingMask(value: newString,
                                                 mask: mask)
-            if newString.count > 17 {
-                let phoneNumber = newString.formatterNumber()
-                print("numberTexField \(phoneNumber)")
-            }
+            presenter?.stringValidation(text: newString,
+                                        regex: Regex.phone.rawValue,
+                                        textField: numberTexField)
         }
         if textField == emailTexField {
+            presenter?.stringValidation(text: newString,
+                                        regex: Regex.email.rawValue,
+                                        textField: emailTexField)
             emailTexField.text = newString
-            print("emailTexField \(newString)")
         }
         return false
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

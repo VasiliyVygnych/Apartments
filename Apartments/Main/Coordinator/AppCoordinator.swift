@@ -35,13 +35,6 @@ class AppCoordinator: AppCoordinatorProtocol {
         }
     }
 //MARK: - goBookingRoomView
-    func goBookingRoomView() {
-        if let navigationController = navigationController {
-            let bookingRoomView = assembler.createBookingRoomView(coordinator: self)
-            navigationController.pushViewController(bookingRoomView,
-                                                    animated: true)
-        }
-    }
     func goBookingRoomView(model: Room) {
         if let navigationController = navigationController {
             let bookingRoomView = assembler.createBookingRoomView(model: model,
@@ -49,13 +42,7 @@ class AppCoordinator: AppCoordinatorProtocol {
             navigationController.pushViewController(bookingRoomView,
                                                     animated: true)
         }
-    }
-    
-    
-    
-    
-    
-    
+    }  
 //MARK: - goPaymentScreenView
     func goPaymentScreenView() {
         if let navigationController = navigationController {

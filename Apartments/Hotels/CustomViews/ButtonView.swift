@@ -26,26 +26,26 @@ class ButtonView: UIView {
     private var firstButtonView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundGray")
         return view
     }()
     private var secondButtonView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundGray")
         return view
     }()
     private var threeButtonView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "backgroundGray")
         return view
     }()
 //MARK: - UILabel
     private var firstTitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Удобства"
+        label.text = Constants.Text.firstTitle
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .light)
@@ -57,13 +57,13 @@ class ButtonView: UIView {
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 14,
                                    weight: .light)
-        label.text = "Самое необходимое"
+        label.text = Constants.Text.firstSubtitle
         return label
     }()
     private var secondTitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Что включено"
+        label.text = Constants.Text.secondTitle
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .light)
@@ -72,7 +72,7 @@ class ButtonView: UIView {
     private var secondSubtitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Самое необходимое"
+        label.text = Constants.Text.firstSubtitle
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 14,
                                    weight: .light)
@@ -84,13 +84,13 @@ class ButtonView: UIView {
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .light)
-        label.text = "Что включено"
+        label.text = Constants.Text.secondTitle
         return label
     }()
     private var threeSubtitle: UILabel = {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Не самое необходимое"
+        label.text = Constants.Text.threeSubtitle
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: 14,
                                    weight: .light)
@@ -145,7 +145,7 @@ class ButtonView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 12
         self.addGestureRecognizer(tapGestureRecognizer)
         tapGestureRecognizer.addTarget(self,
                                        action: #selector(didTap))

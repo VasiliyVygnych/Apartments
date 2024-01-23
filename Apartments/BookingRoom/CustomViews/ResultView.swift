@@ -18,7 +18,7 @@ class ResultView: UIView {
         label.numberOfLines = 0
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Тур"
+        label.text = Constants.Text.turlLabel
      return label
     }()
     private var fuelLabel: UILabel = {
@@ -28,7 +28,7 @@ class ResultView: UIView {
         label.numberOfLines = 0
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Топливный сбор"
+        label.text = Constants.Text.fuelLabel
      return label
     }()
     private var serviseLabel: UILabel = {
@@ -38,7 +38,7 @@ class ResultView: UIView {
         label.numberOfLines = 0
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "Сервисный сбор"
+        label.text = Constants.Text.serviseLabel
      return label
     }()
     private var paymentLabel: UILabel = {
@@ -48,7 +48,7 @@ class ResultView: UIView {
         label.numberOfLines = 0
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .regular)
-        label.text = "К оплате"
+        label.text = Constants.Text.paymentLabel
      return label
     }()
     

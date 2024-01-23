@@ -9,6 +9,14 @@ import UIKit
 
 //MARK: - extension String
 extension String {
+//MARK: - localized
+    func localized() -> String {
+        NSLocalizedString(self,
+                          tableName: "localization",
+                          bundle: .main,
+                          value: self,
+                          comment: self)
+    }
 //MARK: - formatterNumber
     func formatterNumber() -> String {
         let cleanPhoneNumber = components(separatedBy: CharacterSet.decimalDigits.inverted).joined()
@@ -17,7 +25,6 @@ extension String {
         var startIndex = cleanPhoneNumber.startIndex
         let endIndex = cleanPhoneNumber.endIndex
         for charct in mark where startIndex < endIndex {
-            
             if charct == "X" {
                 result.append(cleanPhoneNumber[startIndex])
                 startIndex = cleanPhoneNumber.index(after: startIndex)
@@ -42,6 +49,13 @@ extension String {
             }
         }
         return result
+    }
+//MARK: - addingMask
+    func checkingForCompliance(_ regex: String) -> Bool {
+        return self.range(of: regex,
+                          options: .regularExpression,
+                          range: nil,
+                          locale: nil) != nil
     }
 }
 

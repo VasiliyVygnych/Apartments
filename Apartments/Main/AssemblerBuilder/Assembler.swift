@@ -13,7 +13,8 @@ class Assembler: AssemblerProtocol {
         let viewController = HotelViewController()
         var presenter: HotelPresenterProtocol & HotelInteractorOutputProtocol = HotelPresenter()
         var interactor: HotelInteractorInputProtocol = HotelInteractor()
-        let network: NetworkProtocol = Network()
+        let parser: ParserProtocol = Parser()
+        var network: NetworkProtocol = Network()
         let coordinator = coordinator
         viewController.presenter = presenter
         presenter.view = viewController
@@ -21,6 +22,7 @@ class Assembler: AssemblerProtocol {
         presenter.coordinator = coordinator
         interactor.presenter = presenter
         interactor.network = network
+        network.parser = parser
         return viewController
     }
 //MARK: - createHotelRoomView
@@ -29,7 +31,8 @@ class Assembler: AssemblerProtocol {
         let viewController = HotelRoomViewController()
         var presenter: HotelRoomPresenterProtocol & HotelRoomInteractorOutputProtocol = HotelRoomPresenter()
         var interactor: HotelRoomInteractorInputProtocol = HotelRoomInteractor()
-        let network: NetworkProtocol = Network()
+        let parser: ParserProtocol = Parser()
+        var network: NetworkProtocol = Network()
         let coordinator = coordinator
         viewController.presenter = presenter
         presenter.view = viewController
@@ -38,29 +41,17 @@ class Assembler: AssemblerProtocol {
         interactor.presenter = presenter
         interactor.network = network
         interactor.hotelModel = model
+        network.parser = parser
         return viewController
     }
 //MARK: - createBookingRoomView
-    func createBookingRoomView(coordinator: AppCoordinatorProtocol) -> UIViewController {
-        let viewController = BookingRoomViewController()
-        var presenter: BookingPresenterProtocol & BookingInteractorOutputProtocol = BookingPresenter()
-        var interactor: BookingInteractorInputProtocol = BookingInteractor()
-        let network: NetworkProtocol = Network()
-        let coordinator = coordinator
-        viewController.presenter = presenter
-        presenter.view = viewController
-        presenter.interactor = interactor
-        presenter.coordinator = coordinator
-        interactor.presenter = presenter
-        interactor.network = network
-        return viewController
-    }
     func createBookingRoomView(model: Room,
                                coordinator: AppCoordinatorProtocol) -> UIViewController {
         let viewController = BookingRoomViewController()
         var presenter: BookingPresenterProtocol & BookingInteractorOutputProtocol = BookingPresenter()
         var interactor: BookingInteractorInputProtocol = BookingInteractor()
-        let network: NetworkProtocol = Network()
+        let parser: ParserProtocol = Parser()
+        var network: NetworkProtocol = Network()
         let coordinator = coordinator
         viewController.presenter = presenter
         presenter.view = viewController
@@ -69,21 +60,9 @@ class Assembler: AssemblerProtocol {
         interactor.presenter = presenter
         interactor.network = network
         interactor.roomModel = model
+        network.parser = parser
         return viewController
-        
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 //MARK: - createBookingRoomView
     func createPaymentScreenView(coordinator: AppCoordinatorProtocol) -> UIViewController {
         let viewController = PaymentScreenView()

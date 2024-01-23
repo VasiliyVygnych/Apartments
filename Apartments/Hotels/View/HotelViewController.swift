@@ -19,14 +19,14 @@ class HotelViewController: UITableViewController {
 //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Отель"
+        title = Constants.Text.navTitleHotel
         setupeTableView()
         presenter?.viewDidLoad()
     }
 //MARK: - setupeTableView
     private func setupeTableView() {
         tableView.backgroundColor = .white
-        tableView.rowHeight = 980
+        tableView.rowHeight = 1050
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorColor = .clear
         tableView.register(TableViewHotelCell.self,

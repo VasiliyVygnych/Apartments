@@ -20,7 +20,8 @@ class CollectionView: UIView {
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: 400, height: 257)
+        layout.itemSize = .init(width: 400,
+                                height: 257)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.sectionInset = .init(top: 0,
@@ -39,23 +40,33 @@ class CollectionView: UIView {
         collectionView.isPagingEnabled = true
         return collectionView
     }()
-//MARK: - padeControl
+    
+    
+    
+//MARK: - UIPageControl
      var padeControl: UIPageControl = {
        let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
-        page.currentPage = 0
-        page.hidesForSinglePage = true
+//        page.currentPage = 0
+//        page.hidesForSinglePage = true
+//        page.allowsContinuousInteraction = true
         page.layer.cornerRadius = 5
         page.currentPageIndicatorTintColor = .black
         page.backgroundColor = UIColor(named: "textGrey")
         return page
     }()
+    
+    
+    
+    
+//MARK: - init
     init() {
         super.init(frame: .zero)
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 12
+        
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -78,32 +89,46 @@ private extension CollectionView {
             make.edges.equalToSuperview()
         }
         padeControl.snp.makeConstraints { make in
-            make.top.equalTo(225)
+            make.top.equalTo(220)
             make.centerX.equalToSuperview()
         }
     }
 }
-//MARK: - extension CollectionView
 extension CollectionView: UICollectionViewDataSource, UICollectionViewDelegate {
+//MARK: - numberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         model?.imageUrls.count ?? 0
     }
+//MARK: - cellForItemAt
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "viewCell",
                                                       for: indexPath) as! ImageCollectionView
         guard let model = model else { return UICollectionViewCell() }
-        padeControl.numberOfPages = model.imageUrls.count
         let images = model.imageUrls[indexPath.row]
         let url = URL(string: images)
         cell.imageView.sd_setImage(with: url,
                                    placeholderImage: UIImage(named: "AppIcon"))
+        
+        
+        
+//        print("indexPath \(indexPath.item)")
+        
+        padeControl.numberOfPages = model.imageUrls.count
         return cell
     }
+//MARK: - willDisplay
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         padeControl.currentPage = indexPath.row
     }
+    
+    
+   
+    
+    
+    
+    
 }

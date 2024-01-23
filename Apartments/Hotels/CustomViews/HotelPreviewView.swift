@@ -100,7 +100,7 @@ class HotelPreviewView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 12
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -141,35 +141,36 @@ private extension HotelPreviewView {
     //MARK: - setupeConstraint
     func setupeConstraint() {
         collectionView.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
+            make.top.equalToSuperview().inset(30)
+            make.width.equalToSuperview().inset(16)
+            make.left.equalTo(16)
             make.height.equalTo(257)
-            make.leading.trailing.equalToSuperview().inset(16)
         }
         ratingView.snp.makeConstraints { make in
-            make.top.equalTo(290)
+            make.top.equalTo(320)
             make.width.equalTo(149)
             make.height.equalTo(29)
             make.leading.equalTo(16)
         }
         nameHotelLabbel.snp.makeConstraints { make in
-            make.top.equalTo(330)
+            make.top.equalTo(370)
             make.height.equalTo(60)
             make.width.equalTo(400)
             make.leading.equalTo(16)
         }
         adressButton.snp.makeConstraints { make in
-            make.top.equalTo(390)
+            make.top.equalTo(nameHotelLabbel.snp.bottom).inset(-5)
             make.height.equalTo(20)
             make.width.equalTo(343)
             make.leading.equalTo(16)
         }
         priseLabel.snp.makeConstraints { make in
-            make.top.equalTo(415)
+            make.top.equalTo(478)
             make.height.equalTo(36)
             make.leading.equalTo(18)
         }
         infoLabel.snp.makeConstraints { make in
-            make.top.equalTo(430)
+            make.top.equalTo(492)
             make.height.equalTo(19)
             make.leading.equalTo(priseLabel.snp.trailing).inset(-10)
         }

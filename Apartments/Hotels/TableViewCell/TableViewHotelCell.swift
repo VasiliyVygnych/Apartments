@@ -24,6 +24,20 @@ class TableViewHotelCell: UITableViewCell {
     private var buttonView: ButtonView = {
         let view = ButtonView()
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "backgroundGray")
+        return view
+    }()
+    private var conteinerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    var contentViewButton: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
         return view
     }()
     private var infoHotelView: UIView = {
@@ -42,7 +56,7 @@ class TableViewHotelCell: UITableViewCell {
         label.textColor = .black
         label.font = .systemFont(ofSize: 22,
                                  weight: .regular)
-        label.text = "Об отеле"
+        label.text = Constants.Text.aboutHotelLabbel
         return label
     }()
      var infoHotelLabbel: UILabel = {
@@ -80,13 +94,12 @@ class TableViewHotelCell: UITableViewCell {
      var cellButton: UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("К выбору номера",
+         button.setTitle(Constants.Text.nextScreenRoom,
                         for: .normal)
         button.setTitleColor(.white,
                              for: .normal)
         button.backgroundColor = UIColor(named: "primaryButtons")
         button.layer.cornerRadius = 15
-        button.isUserInteractionEnabled = false
         return button
     }()
 //MARK: - init
@@ -96,8 +109,6 @@ class TableViewHotelCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
         setupeView()
         setupeConstraint()
-//        contentView.backgroundColor = UIColor(named: "gray")
-        contentView.isUserInteractionEnabled = true
         contentView.layer.cornerRadius = 15
     }
     required init?(coder: NSCoder) {
@@ -107,7 +118,7 @@ class TableViewHotelCell: UITableViewCell {
         super.layoutSubviews()
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5,
                                                                      left: 0,
-                                                                     bottom: 25,
+                                                                     bottom: 50,
                                                                      right: 0))
     }
 }
@@ -117,11 +128,18 @@ private extension TableViewHotelCell {
         self.backgroundColor = UIColor(named: "gray")
         contentView.addSubview(hotelPreviewView)
         contentView.addSubview(infoHotelView)
-        contentView.addSubview(cellButton)
+        
+        
+        contentView.addSubview(conteinerView)
+        conteinerView.addSubview(contentViewButton)
+        
+        contentViewButton.addSubview(cellButton)
+        contentViewButton.addSubview(buttonView)
+        
         infoHotelView.addSubview(collectionView)
         infoHotelView.addSubview(aboutHotelLabbel)
         infoHotelView.addSubview(infoHotelLabbel)
-        infoHotelView.addSubview(buttonView)
+        
         collectionView.dataSource = self
         collectionView.register(ViewCollectionCell.self,
                                 forCellWithReuseIdentifier: "viewCell")
@@ -131,7 +149,7 @@ private extension TableViewHotelCell {
         hotelPreviewView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(460)
+            make.height.equalTo(530)
         }
         infoHotelView.snp.makeConstraints { make in
             make.top.equalTo(hotelPreviewView.snp.bottom).inset(-5)
@@ -158,11 +176,21 @@ private extension TableViewHotelCell {
             make.width.equalTo(400)
             make.left.equalTo(16)
         }
+        conteinerView.snp.makeConstraints { make in
+            make.top.equalTo(infoHotelView.snp.bottom).inset(-5)
+            make.width.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        contentViewButton.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(70)
+        }
         cellButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(10)
             make.width.equalTo(385)
             make.height.equalTo(48)
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
         }
     }
 }

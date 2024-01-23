@@ -1,0 +1,58 @@
+/* 
+ localization.strings
+  Apartments
+
+  Created by Vasiliy Vygnych on 22.01.2024.
+  
+*/
+
+//MARK: - HotelViewControlle
+"Conveniences" = "Удобства" ;
+"The most necessary" = "Самое необходимое" ;
+"What is included" = "Что включено" ;
+"Not the most necessary" = "Не самое необходимое" ;
+"About the hotel" = "Об отеле" ;
+"Choose a number" = "К выбору номера" ;
+"Hotel" = "Отель" ;
+//MARK: - RoomViewController
+"Choose a number" = "Выбрать номер" ;
+//MARK: - RoomsCollectionCell
+"More about the room" = "Подробнее о номере" ;
+//MARK: - BookingViewController
+"Add tourist" = "Добавьте туриста" ;
+"Booking" = "Бронирование" ;
+//MARK: - InfoView
+"Departure from" = "Вылет из" ;
+"Country, city" = "Страна, город" ;
+"Dates" = "Даты" ;
+"Number of nights" = "Кол-во ночей" ;
+"Room" = "Номер" ;
+"Meals" = "Питание" ;
+//MARK: - InfoBuyerView
+"Information about the buyer" = "Информация о покупателе" ;
+"This data is not shared with anyone. After payment, we will send a receipt to the number and email you specified" = "Эти данные никому не передаются. После оплаты мы вышлем чек на указанный вами номер и почту" ;
+"Phone number" = "Номер телефона" ;
+"Mail" = "Почта" ;
+//MARK: - NewTourustView
+"First tourist" = "Первый турист" ;
+"Second tourist" = "Второй турист" ;
+"Third tourist" = "Третий турист" ;
+"Fourth tourist" = "Четвертый турист" ;
+"Fifth tourist" = "Пятый турист" ;
+"Maximum number of tourists" = "Максимальное количество туристов" ;
+"Name" = "Имя" ;
+"Last name" = "Фамилия" ;
+"Date of birth" = "Дата рождения" ;
+"Citizenship" = "Гражданство" ;
+"Passport number" = "Номер загранпаспорта" ;
+"The validity period of the passport" = "Срок действия загранпаспорта" ;
+//MARK: - ResultView
+"Tour" = "Тур" ;
+"Fuel сharge" = "Топливный сбор" ;
+"Service charge" = "Сервисный сбор" ;
+"Total cost" = "К оплате" ;
+//MARK: - PaymentScreenView
+"Your order has been accepted" = "Ваш заказ принят в работу" ;
+"Order confirmation No. 104893 may take some time (from 1 hour to a day). As soon as we receive a response from the tour operator, you will receive a notification by email" = "Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление" ;
+"Ok" = "Cупер" ;
+"The order is paid" = "Заказ оплачен" ;

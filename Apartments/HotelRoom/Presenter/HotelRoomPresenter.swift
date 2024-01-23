@@ -18,9 +18,6 @@ class HotelRoomPresenter: HotelRoomPresenterProtocol {
         interactor?.hotelRoomfetchData()
         interactor?.setHotelData()
     }
-    func goBookingRoomView() {
-        coordinator?.goBookingRoomView()
-    }
     func goBookingRoomView(model: Room) {
         coordinator?.goBookingRoomView(model: model)
     }

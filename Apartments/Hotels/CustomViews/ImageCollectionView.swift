@@ -35,7 +35,7 @@ private extension ImageCollectionView {
     func initialization() {
         self.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(2)
+            make.edges.equalToSuperview().inset(5)
         }
     }
 }

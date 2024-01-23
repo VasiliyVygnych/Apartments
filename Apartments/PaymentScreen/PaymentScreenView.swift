@@ -39,7 +39,7 @@ class PaymentScreenView: UIViewController {
         label.textAlignment = .center
         label.font = .sFProDisplay(ofSize: 25,
                                    weight: .regular)
-        label.text = "Ваш заказ принят в работу"
+        label.text = Constants.Text.acceptedLabdel
         return label
     }()
     private var infoLabel: UILabel = {
@@ -50,14 +50,14 @@ class PaymentScreenView: UIViewController {
         label.textAlignment = .center
         label.font = .sFProDisplay(ofSize: 16,
                                    weight: .light)
-        label.text = "Подтверждение заказа №104893 может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление"
+        label.text = Constants.Text.infoLabel
         return label
     }()
 //MARK: - button
     private var nextScreenButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Cупер",
+        button.setTitle(Constants.Text.nextScreenButton,
                         for: .normal)
         button.setTitleColor(.white,
                              for: .normal)
@@ -69,7 +69,7 @@ class PaymentScreenView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        title = "Заказ оплачен"
+        title = Constants.Text.navTitlePayment
         setupeView()
         setupeConstraint()
         setupeButton()
