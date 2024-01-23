@@ -51,7 +51,6 @@ class ResultView: UIView {
         label.text = Constants.Text.paymentLabel
      return label
     }()
-    
     var totalIntLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right

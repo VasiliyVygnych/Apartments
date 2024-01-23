@@ -128,18 +128,13 @@ private extension TableViewHotelCell {
         self.backgroundColor = UIColor(named: "gray")
         contentView.addSubview(hotelPreviewView)
         contentView.addSubview(infoHotelView)
-        
-        
+        contentView.addSubview(buttonView)
         contentView.addSubview(conteinerView)
         conteinerView.addSubview(contentViewButton)
-        
         contentViewButton.addSubview(cellButton)
-        contentViewButton.addSubview(buttonView)
-        
         infoHotelView.addSubview(collectionView)
         infoHotelView.addSubview(aboutHotelLabbel)
         infoHotelView.addSubview(infoHotelLabbel)
-        
         collectionView.dataSource = self
         collectionView.register(ViewCollectionCell.self,
                                 forCellWithReuseIdentifier: "viewCell")

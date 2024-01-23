@@ -112,8 +112,9 @@ class BookingRoomViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white,
                              for: .normal)
-        button.backgroundColor = UIColor(named: "primaryButtons")
         button.layer.cornerRadius = 15
+        button.backgroundColor = UIColor(named: "primaryButtons3")
+        button.isUserInteractionEnabled = false
         return button
     }()
     private var addNewTouristButton: UIButton = {
@@ -121,6 +122,7 @@ class BookingRoomViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(named: "plus"),
                                   for: .normal)
+        button.backgroundColor = UIColor(named: "primaryButtons")
         button.layer.cornerRadius = 6
         return button
     }()
@@ -134,15 +136,20 @@ class BookingRoomViewController: UIViewController {
         setupeButton()
         setupeBackButoon()
         setPresenter()
-//        buttonIsActiveted()
+        buttonIsActiveted()
+        let tapGesture = UITapGestureRecognizer(target: view,
+                                                action: #selector(UIView.endEditing))
+         view.addGestureRecognizer(tapGesture)
     }
-//MARK: - buttonIsActive
+//MARK: - buttonIsActiveted
     private func buttonIsActiveted() {
-        paymentButton.backgroundColor = UIColor(named: "primaryButtons3")
-        paymentButton.isUserInteractionEnabled = false
-        presenter?.updateView = {
+        presenter?.showButton = {
             self.paymentButton.backgroundColor = UIColor(named: "primaryButtons")
             self.paymentButton.isUserInteractionEnabled = true
+        }
+        presenter?.hiddenButton = {
+            self.paymentButton.backgroundColor = UIColor(named: "primaryButtons3")
+            self.paymentButton.isUserInteractionEnabled = false
         }
     }
 //MARK: - set presenter for custom views
@@ -301,7 +308,6 @@ class BookingRoomViewController: UIViewController {
         }
     }
 }
-
 //MARK: - extension BookingViewProtocol
 extension BookingRoomViewController: BookingViewProtocol {
     func dataSet(model: BookimgModel) {

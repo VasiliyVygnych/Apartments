@@ -18,16 +18,15 @@ protocol BookingPresenterProtocol {
     var view: BookingViewProtocol? { get set }
     var interactor: BookingInteractorInputProtocol? { get set }
     var coordinator: AppCoordinatorProtocol? { get set }
-    var updateView: (() -> Void)? { get set }
+    var showButton: (() -> Void)? { get set }
+    var hiddenButton: (() -> Void)? { get set }
 
     func viewDidLoad()
     func goPaymentScreenView()
-    func validateCount(text: String,
-                       textField: UITextField,
-                       minimumCount: Int)
     func stringValidation(text: String,
-                          regex: String,
-                          textField: UITextField)
+                          regex: String) -> Bool
+    func validateCount(text: String,
+                       minimumCount: Int) -> Bool
 }
 
 protocol BookingInteractorInputProtocol {

@@ -12,47 +12,34 @@ class BookingPresenter: BookingPresenterProtocol {
     var view: BookingViewProtocol?
     var interactor: BookingInteractorInputProtocol?
     var coordinator: AppCoordinatorProtocol?
-    var updateView: (() -> Void)?
+    var showButton: (() -> Void)?
+    var hiddenButton: (() -> Void)?
     
-//MARK: - viewDidLoad
+    //MARK: - viewDidLoad
     func viewDidLoad() {
         interactor?.bookingRoomfetchData()
         interactor?.setRoomData()
     }
-//MARK: - goPaymentScreenView
+    //MARK: - goPaymentScreenView
     func goPaymentScreenView() {
         coordinator?.goPaymentScreenView()
     }
-//MARK: - validateCount
+    //MARK: - validateCount
     func validateCount(text: String,
-                       textField: UITextField,
-                       minimumCount: Int) {
+                       minimumCount: Int) -> Bool {
         guard text.count >= minimumCount else {
-            textField.backgroundColor = UIColor(named: "error")
-            return
+            return false
         }
-        textField.backgroundColor = .white
+        return true
     }
-//MARK: - validateText
+    //MARK: - stringValidation
     func stringValidation(text: String,
-                      regex: String,
-                      textField: UITextField) {
-        guard text.checkingForCompliance(regex) else {
-            textField.backgroundColor = UIColor(named: "error")
-            return
-        }
-        textField.backgroundColor = .white
-   }
-//MARK: - checkingАllValues
-    func checkingАllValues() {
-//            updateView?()
+                          regex: String) -> Bool {
+        let check = NSPredicate(format: "SELF MATCHES %@",
+                                regex)
+        return check.evaluate(with: text)
     }
-    
-    
-    
-    
 }
-
 //MARK: - extension BookingInteractorOutputProtocol
 extension BookingPresenter: BookingInteractorOutputProtocol {
     func dataForTheView(model: BookimgModel) {

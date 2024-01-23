@@ -51,9 +51,8 @@ class HotelViewController: UITableViewController {
 //MARK: - didSelectRowAt
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: indexPath) //else { return  }
+        let cell = self.tableView.cellForRow(at: indexPath)
         guard let model = model else { return }
-        
         UIView.animate(withDuration: 0.4,
                        delay: 0,
                        options: .curveEaseOut,

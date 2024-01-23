@@ -11,7 +11,7 @@ import SnapKit
 class InfoBuyerView: UIView {
     
     var presenter: BookingPresenterProtocol?
-
+    
 //MARK: - UILabel
     private var infoBuyerLabel: UILabel = {
        let label = UILabel()
@@ -122,19 +122,26 @@ extension InfoBuyerView: UITextFieldDelegate {
             let mask = "+* (***) ***-**-**"
             numberTexField.text = "".addingMask(value: newString,
                                                 mask: mask)
-            presenter?.stringValidation(text: newString,
-                                        regex: Regex.phone.rawValue,
-                                        textField: numberTexField)
+            if presenter?.stringValidation(text: newString,
+                                           regex: Regex.phone.rawValue) == true {
+                numberTexField.backgroundColor = .white
+            } else {
+                numberTexField.backgroundColor = UIColor(named: "error")
+            }
         }
         if textField == emailTexField {
-            presenter?.stringValidation(text: newString,
-                                        regex: Regex.email.rawValue,
-                                        textField: emailTexField)
+            if presenter?.stringValidation(text: newString,
+                                           regex: Regex.email.rawValue) == true {
+                emailTexField.backgroundColor = .white
+            } else {
+                emailTexField.backgroundColor = UIColor(named: "error")
+            }
             emailTexField.text = newString
         }
         return false
     }
-
+    
+//MARK: - textFieldShouldReturn
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

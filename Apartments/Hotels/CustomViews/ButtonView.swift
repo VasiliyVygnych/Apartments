@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ButtonView: UIView {
-    let tapGestureRecognizer = UITapGestureRecognizer()
 //MARK: - UIView
     private var intermediateView: UIView = {
        let view = UIView()
@@ -23,23 +22,24 @@ class ButtonView: UIView {
         view.backgroundColor = UIColor(named: "gray")
         return view
     }()
-    private var firstButtonView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "backgroundGray")
-        return view
+//MARK: - UIButton
+    private var firstButtonView: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(named: "backgroundGray")
+        return button
     }()
-    private var secondButtonView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "backgroundGray")
-        return view
+    private var secondButtonView: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(named: "backgroundGray")
+        return button
     }()
-    private var threeButtonView: UIView = {
-       let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "backgroundGray")
-        return view
+    private var threeButtonView: UIButton = {
+       let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = UIColor(named: "backgroundGray")
+        return button
     }()
 //MARK: - UILabel
     private var firstTitle: UILabel = {
@@ -144,32 +144,37 @@ class ButtonView: UIView {
         super.init(frame: .zero)
         initialization()
         setupeConstraint()
+        setupeButton()
         self.backgroundColor = .white
         self.layer.cornerRadius = 12
-        self.addGestureRecognizer(tapGestureRecognizer)
-        tapGestureRecognizer.addTarget(self,
-                                       action: #selector(didTap))
+        self.isUserInteractionEnabled = true
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//MARK: - didTap
-    @objc func didTap(_ gesture: UITapGestureRecognizer) {
-        let tapFirstButton = gesture.location(in: firstButtonView.superview)
-        if (firstButtonView.layer.presentation()?.frame.contains(tapFirstButton))! {
-            clickAnimation(view: firstButtonView)
-            print("tap firstButtonView")
-        }
-        let tapSecondButton = gesture.location(in: secondButtonView.superview)
-        if (secondButtonView.layer.presentation()?.frame.contains(tapSecondButton))! {
-            clickAnimation(view: secondButtonView)
-            print("tap secondButtonView")
-        }
-        let tapThreeButton = gesture.location(in: threeButtonView.superview)
-        if (threeButtonView.layer.presentation()?.frame.contains(tapThreeButton))! {
-            clickAnimation(view: threeButtonView)
-            print("tap threeButtonView")
-        }
+//MARK: - setupeButton
+    private func setupeButton() {
+        firstButtonView.addTarget(self,
+                                  action: #selector(firstTarget),
+                                  for: .touchUpInside)
+        secondButtonView.addTarget(self,
+                                   action: #selector(secondTarget),
+                                   for: .touchUpInside)
+        threeButtonView.addTarget(self,
+                                  action: #selector(thirdTarget),
+                                  for: .touchUpInside)
+    }
+    @objc func firstTarget() {
+        clickAnimation(view: firstButtonView)
+        print("firstButtonView")
+    }
+    @objc func secondTarget() {
+        clickAnimation(view: secondButtonView)
+        print("secondButtonView")
+    }
+    @objc func thirdTarget() {
+        clickAnimation(view: threeButtonView)
+        print("threeButtonView")
     }
 //MARK: - clickAnimation
     func clickAnimation(view: UIView) {

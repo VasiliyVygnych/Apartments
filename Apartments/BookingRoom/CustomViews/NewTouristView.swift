@@ -128,9 +128,13 @@ class NewTourustView: UIStackView {
         super.init(frame: .zero)
         initialization()
         setupeConstraint()
+        setupeTextField()
         self.backgroundColor = .white
         self.axis = .vertical
         self.layer.cornerRadius = 15
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(UIView.endEditing))
+        self.addGestureRecognizer(tapGesture)
         button.addTarget(self,
                          action: #selector(showHiddenView),
                          for: .touchUpInside)
@@ -164,25 +168,26 @@ class NewTourustView: UIStackView {
 //MARK: - extension
 private extension NewTourustView {
     func initialization() {
-        firstName.delegate = self
-        surName.delegate = self
-        dateOfBirth.delegate = self
-        citizenship.delegate = self
-        passportNumber.delegate = self
-        validityPeriod.delegate = self
-        
         self.addArrangedSubview(topView)
         topView.addSubview(button)
         topView.addSubview(touristLabel)
         self.addArrangedSubview(contentView)
         contentView.addSubview(upperView)
-        
         contentView.addSubview(firstName)
         contentView.addSubview(surName)
         contentView.addSubview(dateOfBirth)
         contentView.addSubview(citizenship)
         contentView.addSubview(passportNumber)
         contentView.addSubview(validityPeriod)
+    }
+//MARK: - setupeTextField
+    func setupeTextField() {
+        firstName.delegate = self
+        surName.delegate = self
+        dateOfBirth.delegate = self
+        citizenship.delegate = self
+        passportNumber.delegate = self
+        validityPeriod.delegate = self
     }
 //MARK: - setupeConstraint
     func setupeConstraint() {
@@ -241,12 +246,12 @@ private extension NewTourustView {
         }
     }
 }
+
 //MARK: - extension UITextFieldDelegate
 extension NewTourustView: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                   shouldChangeCharactersIn range: NSRange,
                   replacementString string: String) -> Bool {
-    
         guard let text = textField.text else { return false }
         let newString = (text as NSString).replacingCharacters(in: range,
                                                                with: string)
@@ -254,43 +259,79 @@ extension NewTourustView: UITextFieldDelegate {
             let mask = "**-**-****"
             dateOfBirth.text = "".addingMask(value: newString,
                                              mask: mask)
-            presenter?.validateCount(text: newString,
-                                     textField: dateOfBirth,
-                                     minimumCount: 10)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 10) == true {
+                dateOfBirth.backgroundColor = .white
+                dateOfBirth.isAccessibilityElement = true
+            } else {
+                dateOfBirth.isAccessibilityElement = false
+                dateOfBirth.backgroundColor = UIColor(named: "error")
+            }
+            checkingАllValues()
         }
         if textField == passportNumber {
             let mask = "****-******"
             passportNumber.text = "".addingMask(value: newString,
                                                 mask: mask)
-            presenter?.validateCount(text: newString,
-                                     textField: passportNumber,
-                                     minimumCount: 11)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 11) == true {
+                passportNumber.backgroundColor = .white
+                passportNumber.isAccessibilityElement = true
+            } else {
+                passportNumber.backgroundColor = UIColor(named: "error")
+                passportNumber.isAccessibilityElement = false
+            }
+            checkingАllValues()
         }
         if textField == validityPeriod {
             let mask = "**-**-****"
             validityPeriod.text = "".addingMask(value: newString,
                                                 mask: mask)
-            presenter?.validateCount(text: newString,
-                                     textField: validityPeriod,
-                                     minimumCount: 10)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 10) == true {
+                validityPeriod.backgroundColor = .white
+                validityPeriod.isAccessibilityElement = true
+            } else {
+                validityPeriod.backgroundColor = UIColor(named: "error")
+                validityPeriod.isAccessibilityElement = false
+            }
+            checkingАllValues()
         }
         if textField == firstName {
             firstName.text = newString
-            presenter?.validateCount(text: newString,
-                                     textField: firstName,
-                                     minimumCount: 2)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 3) == true {
+                firstName.backgroundColor = .white
+                firstName.isAccessibilityElement = true
+            } else {
+                firstName.backgroundColor = UIColor(named: "error")
+                firstName.isAccessibilityElement = false
+            }
+            checkingАllValues()
         }
         if textField == surName {
             surName.text = newString
-            presenter?.validateCount(text: newString,
-                                     textField: surName,
-                                     minimumCount: 2)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 3) == true {
+                surName.backgroundColor = .white
+                surName.isAccessibilityElement = true
+            } else {
+                surName.backgroundColor = UIColor(named: "error")
+                surName.isAccessibilityElement = false
+            }
+            checkingАllValues()
         }
         if textField == citizenship {
             citizenship.text = newString
-            presenter?.validateCount(text: newString,
-                                     textField: citizenship,
-                                     minimumCount: 2)
+            if presenter?.validateCount(text: newString,
+                                        minimumCount: 3) == true {
+                citizenship.backgroundColor = .white
+                citizenship.isAccessibilityElement = true
+            } else {
+                citizenship.backgroundColor = UIColor(named: "error")
+                citizenship.isAccessibilityElement = false
+            }
+            checkingАllValues()
         }
         return false
     }
@@ -299,4 +340,14 @@ extension NewTourustView: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+//MARK: - checkingАllValues
+    func checkingАllValues() {
+        if dateOfBirth.isAccessibilityElement && passportNumber.isAccessibilityElement && validityPeriod.isAccessibilityElement && firstName.isAccessibilityElement && surName.isAccessibilityElement && citizenship.isAccessibilityElement == true {
+            presenter?.showButton?()
+        } else {
+            presenter?.hiddenButton?()
+        }
+    }
 }
+
