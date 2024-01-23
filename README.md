@@ -10,4 +10,7 @@ Apartments - Мобильное приложение, которое предс�
 - Фреймворки: SDWebImage, SnapKit.
 - Добавлена локализация английского языка.
 - Добавлена валидация ввода в UITextField.
+
+
+
 ![Simulator Screen Recording - iPhone 14 Pro Max - 2024-01-24 at 02 10 39](https://github.com/VasiliyVygnych/Apartments/assets/126402174/0dcdba0a-03fd-431a-b934-8d664597a170)
