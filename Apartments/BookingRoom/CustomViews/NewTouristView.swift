@@ -16,7 +16,7 @@ class NewTourustView: UIStackView {
     var contentView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         view.backgroundColor = .white
         return view
     }()
@@ -29,7 +29,7 @@ class NewTourustView: UIStackView {
     var topView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         view.backgroundColor = .white
         return view
     }()
@@ -39,17 +39,18 @@ class NewTourustView: UIStackView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
          label.text = Constants.Text.firstTourist
-        label.font = .systemFont(ofSize: 22, weight: .regular)
+        label.font = .systemFont(ofSize: CGFloat(Integers.FontSize.size_22),
+                                 weight: .regular)
         return label
     }()
 //MARK: - UITextField
      var firstName: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
          textField.placeholder = Constants.Text.firstName
         textField.borderStyle = .roundedRect
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
         textField.backgroundColor = UIColor(named: "backgroundGray")
         return textField
@@ -57,10 +58,10 @@ class NewTourustView: UIStackView {
      var surName: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
          textField.placeholder = Constants.Text.surName
         textField.borderStyle = .roundedRect
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
         textField.backgroundColor = UIColor(named: "backgroundGray")
         return textField
@@ -68,8 +69,8 @@ class NewTourustView: UIStackView {
      var dateOfBirth: UITextField = {
        let textField = UITextField()
          textField.translatesAutoresizingMaskIntoConstraints = false
-         textField.layer.cornerRadius = 10
-         textField.font = .sFProDisplay(ofSize: 17,
+         textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
+         textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
          textField.placeholder = Constants.Text.dateOfBirth
          textField.borderStyle = .roundedRect
@@ -80,9 +81,9 @@ class NewTourustView: UIStackView {
      var citizenship: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
          textField.placeholder = Constants.Text.citizenship
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(named: "backgroundGray")
@@ -92,8 +93,8 @@ class NewTourustView: UIStackView {
        let textField = UITextField()
          textField.placeholder = Constants.Text.numberTexField
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
          textField.placeholder = Constants.Text.passportNumber
         textField.borderStyle = .roundedRect
@@ -104,8 +105,8 @@ class NewTourustView: UIStackView {
      var validityPeriod: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
          textField.placeholder = Constants.Text.validityPeriod
         textField.borderStyle = .roundedRect
@@ -120,7 +121,7 @@ class NewTourustView: UIStackView {
         button.setBackgroundImage(UIImage(named: "arrow"),
                                           for: .normal)
         button.backgroundColor = UIColor(named: "primaryButtons")
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         return button
     }()
 //MARK: - init
@@ -131,7 +132,7 @@ class NewTourustView: UIStackView {
         setupeTextField()
         self.backgroundColor = .white
         self.axis = .vertical
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         let tapGesture = UITapGestureRecognizer(target: self,
                                                 action: #selector(UIView.endEditing))
         self.addGestureRecognizer(tapGesture)
@@ -204,45 +205,45 @@ private extension NewTourustView {
         firstName.snp.makeConstraints { make in
             make.top.equalTo(15)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         surName.snp.makeConstraints { make in
             make.top.equalTo(76)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         dateOfBirth.snp.makeConstraints { make in
             make.top.equalTo(135)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         citizenship.snp.makeConstraints { make in
             make.top.equalTo(195)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         passportNumber.snp.makeConstraints { make in
             make.top.equalTo(255)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         validityPeriod.snp.makeConstraints { make in
             make.top.equalTo(315)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         topView.snp.makeConstraints { make in
             make.height.equalTo(58)
         }
         touristLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalTo(16)
+            make.leading.equalTo(Integers.Constraints.sideMargins)
             make.height.equalTo(26)
         }
         button.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.height.width.equalTo(32)
-            make.trailing.equalTo(-16)
+            make.trailing.equalTo(-Integers.Constraints.sideMargins)
         }
     }
 }

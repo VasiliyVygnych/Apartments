@@ -15,7 +15,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.labelFrom
         return label
@@ -24,7 +24,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.labelIn
         return label
@@ -33,7 +33,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.labelData
         return label
@@ -42,7 +42,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.numberOfNights
         return label
@@ -51,7 +51,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.hotelLabel
         return label
@@ -60,7 +60,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
          label.text = Constants.Text.roomLabel
         return label
@@ -69,7 +69,7 @@ class InfoView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.foodLabel
         return label
@@ -78,7 +78,7 @@ class InfoView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -86,7 +86,7 @@ class InfoView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                     weight: .regular)
      return label
     }()
@@ -94,7 +94,7 @@ class InfoView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -102,7 +102,7 @@ class InfoView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -111,7 +111,7 @@ class InfoView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -120,7 +120,7 @@ class InfoView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -129,7 +129,7 @@ class InfoView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -139,7 +139,7 @@ class InfoView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -180,43 +180,43 @@ private extension InfoView {
             make.top.equalTo(16)
             make.height.equalTo(19)
             make.width.equalTo(110)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         labelIn.snp.makeConstraints { make in
             make.top.equalTo(51)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         labelData.snp.makeConstraints { make in
             make.top.equalTo(86)
             make.height.equalTo(19)
             make.width.equalTo(100)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         numberOfNights.snp.makeConstraints { make in
             make.top.equalTo(121)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         hotelLabel.snp.makeConstraints { make in
             make.top.equalTo(156)
             make.height.equalTo(19)
             make.width.equalTo(100)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         roomLabel.snp.makeConstraints { make in
             make.top.equalTo(191)
             make.height.equalTo(19)
             make.width.equalTo(100)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         foodLabel.snp.makeConstraints { make in
             make.top.equalTo(245)
             make.height.equalTo(19)
             make.width.equalTo(100)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         countrylabel.snp.makeConstraints { make in
             make.top.equalTo(16)

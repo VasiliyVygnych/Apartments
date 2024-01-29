@@ -27,6 +27,12 @@ class TableViewHotelCell: UITableViewCell {
         view.backgroundColor = UIColor(named: "backgroundGray")
         return view
     }()
+    private var separatorView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = UIColor(named: "gray")
+        return view
+    }()
     private var conteinerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,14 +43,14 @@ class TableViewHotelCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         return view
     }()
     private var infoHotelView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         view.contentMode = .scaleAspectFit
         view.backgroundColor = .white
         return view
@@ -54,7 +60,7 @@ class TableViewHotelCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .systemFont(ofSize: 22,
+        label.font = .systemFont(ofSize: CGFloat(Integers.FontSize.size_22),
                                  weight: .regular)
         label.text = Constants.Text.aboutHotelLabbel
         return label
@@ -64,7 +70,7 @@ class TableViewHotelCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 16,
+        label.font = .systemFont(ofSize: CGFloat(Integers.FontSize.size_16),
                                  weight: .regular)
         return label
     }()
@@ -87,7 +93,8 @@ class TableViewHotelCell: UITableViewCell {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.backgroundColor = UIColor(named: "backgroundGray")
         collectionView.contentMode = .scaleAspectFit
-        collectionView.layer.cornerRadius = 7
+        collectionView.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_7)
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
 //MARK: - UIButton
@@ -99,7 +106,7 @@ class TableViewHotelCell: UITableViewCell {
         button.setTitleColor(.white,
                              for: .normal)
         button.backgroundColor = UIColor(named: "primaryButtons")
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         return button
     }()
 //MARK: - init
@@ -109,17 +116,10 @@ class TableViewHotelCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
         setupeView()
         setupeConstraint()
-        contentView.layer.cornerRadius = 15
+        contentView.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5,
-                                                                     left: 0,
-                                                                     bottom: 50,
-                                                                     right: 0))
     }
 }
 private extension TableViewHotelCell {
@@ -130,6 +130,7 @@ private extension TableViewHotelCell {
         contentView.addSubview(infoHotelView)
         contentView.addSubview(buttonView)
         contentView.addSubview(conteinerView)
+        conteinerView.addSubview(separatorView)
         conteinerView.addSubview(contentViewButton)
         contentViewButton.addSubview(cellButton)
         infoHotelView.addSubview(collectionView)
@@ -154,7 +155,7 @@ private extension TableViewHotelCell {
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(45)
             make.height.equalTo(80)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         buttonView.snp.makeConstraints { make in
             make.top.equalTo(infoHotelLabbel.snp.bottom).inset(-15)
@@ -163,13 +164,18 @@ private extension TableViewHotelCell {
         }
         aboutHotelLabbel.snp.makeConstraints { make in
             make.top.equalTo(10)
-            make.leading.equalTo(16)
+            make.leading.equalTo(Integers.Constraints.sideMargins)
         }
         infoHotelLabbel.snp.makeConstraints { make in
             make.top.equalTo(collectionView.snp.bottom).inset(-10)
             make.height.lessThanOrEqualTo(120)
-            make.width.equalTo(400)
-            make.left.equalTo(16)
+            make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
+            make.left.equalTo(Integers.Constraints.sideMargins)
+        }
+        separatorView.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+            make.height.equalTo(1.5)
+            make.bottom.equalTo(conteinerView.snp.top)
         }
         conteinerView.snp.makeConstraints { make in
             make.top.equalTo(infoHotelView.snp.bottom).inset(-5)
@@ -183,7 +189,8 @@ private extension TableViewHotelCell {
         }
         cellButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.width.equalTo(385)
+            make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
+            make.left.equalTo(Integers.Constraints.sideMargins)
             make.height.equalTo(48)
             make.centerX.equalToSuperview()
         }

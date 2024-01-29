@@ -47,7 +47,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.Text.firstTitle
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
         return label
     }()
@@ -55,7 +55,7 @@ class ButtonView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .light)
         label.text = Constants.Text.firstSubtitle
         return label
@@ -65,7 +65,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.Text.secondTitle
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
         return label
     }()
@@ -74,7 +74,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.Text.firstSubtitle
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .light)
         return label
     }()
@@ -82,9 +82,9 @@ class ButtonView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
-        label.text = Constants.Text.secondTitle
+        label.text = Constants.Text.threeTitle
         return label
     }()
     private var threeSubtitle: UILabel = {
@@ -92,7 +92,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Constants.Text.threeSubtitle
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .light)
         return label
     }()
@@ -146,7 +146,7 @@ class ButtonView: UIView {
         setupeConstraint()
         setupeButton()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
         self.isUserInteractionEnabled = true
     }
     required init?(coder: NSCoder) {

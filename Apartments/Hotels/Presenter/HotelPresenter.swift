@@ -25,7 +25,4 @@ extension HotelPresenter: HotelInteractorOutputProtocol {
     func dataForTheView(model: HotelModel) {
         view?.dataSet(model: model)
     }
-    
-    
-    
 }

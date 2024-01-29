@@ -11,10 +11,9 @@ import SnapKit
 class ImageCollectionView: UICollectionViewCell {
 //MARK: - UIImageView
     var imageView: UIImageView = {
-        let image = UIImageView()
+        let image = UIImageView(frame: CGRect.zero)
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .white
-        image.layer.cornerRadius = 15
+        image.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         image.backgroundColor = . gray
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -24,7 +23,7 @@ class ImageCollectionView: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialization()
-        self.layer.cornerRadius = 7
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_7)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,7 +34,7 @@ private extension ImageCollectionView {
     func initialization() {
         self.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.edges.equalToSuperview()
         }
     }
 }

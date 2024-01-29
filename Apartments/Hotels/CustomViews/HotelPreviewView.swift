@@ -20,7 +20,7 @@ class HotelPreviewView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = UIColor(named: "frameRating")
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         view.layer.shadowOpacity = 0.2
         view.layer.masksToBounds = false
         view.layer.shadowOffset = CGSize(width: 1,
@@ -34,7 +34,7 @@ class HotelPreviewView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 22,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_22),
                                    weight: .regular)
         return label
     }()
@@ -42,7 +42,7 @@ class HotelPreviewView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 30,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_30),
                                    weight: .bold)
         return label
     }()
@@ -50,7 +50,7 @@ class HotelPreviewView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "primaryButtons")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .regular)
         return label
     }()
@@ -58,7 +58,7 @@ class HotelPreviewView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
         return label
     }()
@@ -66,7 +66,7 @@ class HotelPreviewView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textRating")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         return label
     }()
@@ -74,7 +74,7 @@ class HotelPreviewView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textRating")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         return label
     }()
@@ -100,7 +100,7 @@ class HotelPreviewView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 12
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -112,9 +112,9 @@ class HotelPreviewView: UIView {
         self.hotelAddressLabel.text = model.adress
         self.infoLabel.text = model.priceForIt
         self.raitingNameLabel.text = model.ratingName
-        self.priseLabel.text = String(model.minimalPrice)
+        let minimalPrise = "\(Constants.Text.miminalPrise) \(model.minimalPrice) \(Constants.Text.currency)"
+        self.priseLabel.text = minimalPrise
         self.raitingLabel.text = String(model.rating)
-        
         self.collectionView.model = model
     }
 }
@@ -138,39 +138,39 @@ private extension HotelPreviewView {
     @objc func tabAdresButton() {
         print("tap adressButton")
     }
-    //MARK: - setupeConstraint
+//MARK: - setupeConstraint
     func setupeConstraint() {
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(30)
-            make.width.equalToSuperview().inset(16)
-            make.left.equalTo(16)
+            make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
+            make.left.equalTo(Integers.Constraints.sideMargins)
             make.height.equalTo(257)
         }
         ratingView.snp.makeConstraints { make in
-            make.top.equalTo(320)
+            make.top.equalTo(310)
             make.width.equalTo(149)
             make.height.equalTo(29)
-            make.leading.equalTo(16)
+            make.leading.equalTo(Integers.Constraints.sideMargins)
         }
         nameHotelLabbel.snp.makeConstraints { make in
-            make.top.equalTo(370)
+            make.top.equalTo(350)
             make.height.equalTo(60)
             make.width.equalTo(400)
-            make.leading.equalTo(16)
+            make.leading.equalTo(Integers.Constraints.sideMargins)
         }
         adressButton.snp.makeConstraints { make in
             make.top.equalTo(nameHotelLabbel.snp.bottom).inset(-5)
             make.height.equalTo(20)
             make.width.equalTo(343)
-            make.leading.equalTo(16)
+            make.leading.equalTo(Integers.Constraints.sideMargins)
         }
         priseLabel.snp.makeConstraints { make in
-            make.top.equalTo(478)
+            make.top.equalTo(468)
             make.height.equalTo(36)
             make.leading.equalTo(18)
         }
         infoLabel.snp.makeConstraints { make in
-            make.top.equalTo(492)
+            make.top.equalTo(482)
             make.height.equalTo(19)
             make.leading.equalTo(priseLabel.snp.trailing).inset(-10)
         }

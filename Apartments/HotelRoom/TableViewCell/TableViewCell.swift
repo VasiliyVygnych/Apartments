@@ -9,18 +9,18 @@ import UIKit
 import SnapKit
 
 class TableViewCell: UITableViewCell {
+    
     var model: Room? {
         didSet {
             collectionView.reloadData()
         }
     }
-    
 //MARK: - custom view
     var collectionImageRoom: CollectionImageRoom = {
         let view = CollectionImageRoom()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
         return view
     }()
 //MARK: - UILabel
@@ -29,7 +29,7 @@ class TableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 22,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_22),
                                    weight: .regular)
         return label
     }()
@@ -37,7 +37,7 @@ class TableViewCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 30,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_30),
                                    weight: .bold)
         return label
     }()
@@ -45,7 +45,7 @@ class TableViewCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
         return label
     }()
@@ -54,7 +54,7 @@ class TableViewCell: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "primaryButtons")
         label.text = Constants.Text.moreButtonLabel
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         return label
     }()
@@ -84,9 +84,8 @@ class TableViewCell: UITableViewCell {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 12
         view.backgroundColor = UIColor(named: "primaryButtons2")
-        view.layer.cornerRadius = 5
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         return view
     }()
     var cellButton: UIButton = {
@@ -97,7 +96,7 @@ class TableViewCell: UITableViewCell {
        button.setTitleColor(.white,
                             for: .normal)
        button.backgroundColor = UIColor(named: "primaryButtons")
-       button.layer.cornerRadius = 15
+       button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
        button.isUserInteractionEnabled = false
        return button
    }()
@@ -106,7 +105,7 @@ class TableViewCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
         return view
     }()
 //MARK: - UIImageView
@@ -125,6 +124,7 @@ class TableViewCell: UITableViewCell {
         contentView.isUserInteractionEnabled = true
         initialization()
         setupeConstraint()
+        contentView.insetsLayoutMarginsFromSafeArea = true
         moreInfoBotton.addTarget(self,
                                  action: #selector(didTap),
                                  for: .touchUpInside)
@@ -132,6 +132,7 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+//MARK: - @objc func didTap
     @objc func didTap() {
         UIView.animate(withDuration: 0.2,
                        delay: 0,
@@ -152,7 +153,8 @@ class TableViewCell: UITableViewCell {
     }
 //MARK: - сonfigures
     func сonfigures(model: Room) {
-        priseLabel.text = String(model.price)
+        let prise = "\(model.price) \(Constants.Text.currency)"
+        priseLabel.text = prise
         infoRoomLabel.text = model.name
         infoLabel.text = model.pricePer
     }
@@ -195,30 +197,30 @@ private extension TableViewCell {
             make.leading.equalTo(16)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(325)
+            make.top.equalTo(340)
             make.height.equalTo(50)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         priseLabel.snp.makeConstraints { make in
-            make.top.equalTo(432)
+            make.top.equalTo(440)
             make.left.equalTo(16)
             make.width.equalTo(160)
             make.height.equalTo(36)
         }
         infoLabel.snp.makeConstraints { make in
-            make.top.equalTo(447)
+            make.top.equalTo(450)
             make.height.equalTo(19)
             make.left.equalTo(170)
         }
         moreInfoBotton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(395)
+            make.top.equalToSuperview().inset(400)
             make.left.equalTo(16)
             make.width.equalTo(200)
             make.height.equalTo(29)
         }
         cellButton.snp.makeConstraints { make in
             make.height.equalTo(48)
-            make.bottom.equalTo(-10)
+            make.bottom.equalTo(-20)
             make.leading.trailing.equalToSuperview().inset(16)
         }
         moreButtonLabel.snp.makeConstraints { make in
@@ -234,7 +236,8 @@ private extension TableViewCell {
     }
 }
 //MARK: - UICollectionViewDataSource
-extension TableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension TableViewCell: UICollectionViewDataSource,
+                            UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         model?.peculiarities.count ?? 0

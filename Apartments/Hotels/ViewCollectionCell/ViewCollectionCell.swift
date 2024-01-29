@@ -25,7 +25,7 @@ class ViewCollectionCell: UICollectionViewCell {
         super.init(frame: frame)
         initialization()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         self.layer.shadowOpacity = 0.2
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor

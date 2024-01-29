@@ -16,7 +16,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.turlLabel
      return label
@@ -26,7 +26,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.fuelLabel
      return label
@@ -36,7 +36,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.serviseLabel
      return label
@@ -46,7 +46,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         label.text = Constants.Text.paymentLabel
      return label
@@ -57,7 +57,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -67,7 +67,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -77,7 +77,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -87,7 +87,7 @@ class ResultView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "primaryButtons")
         label.numberOfLines = 0
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
      return label
     }()
@@ -97,7 +97,7 @@ class ResultView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -133,49 +133,49 @@ private extension ResultView {
             make.top.equalTo(16)
             make.height.equalTo(19)
             make.width.equalTo(35)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         fuelLabel.snp.makeConstraints { make in
             make.top.equalTo(51)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         serviseLabel.snp.makeConstraints { make in
             make.top.equalTo(86)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         paymentLabel.snp.makeConstraints { make in
             make.top.equalTo(121)
             make.height.equalTo(19)
             make.width.equalTo(100)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         totalIntLabel.snp.makeConstraints { make in
             make.top.equalTo(16)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.trailing.equalTo(-16)
+            make.trailing.equalTo(-Integers.Constraints.sideMargins)
         }
         fuelIntLabel.snp.makeConstraints { make in
             make.top.equalTo(51)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.trailing.equalTo(-16)
+            make.trailing.equalTo(-Integers.Constraints.sideMargins)
         }
         serviseIntLabel.snp.makeConstraints { make in
             make.top.equalTo(86)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.trailing.equalTo(-16)
+            make.trailing.equalTo(-Integers.Constraints.sideMargins)
         }
         paymentIntLabel.snp.makeConstraints { make in
             make.top.equalTo(121)
             make.height.equalTo(19)
             make.width.equalTo(150)
-            make.trailing.equalTo(-16)
+            make.trailing.equalTo(-Integers.Constraints.sideMargins)
         }
     }
 }

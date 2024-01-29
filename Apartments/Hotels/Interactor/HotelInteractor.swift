@@ -20,13 +20,5 @@ class HotelInteractor: HotelInteractorInputProtocol {
                 self?.presenter?.dataForTheView(model: model)
             }
         })
-    }
-    
- 
-    
-    
-    
-    
-    
-    
+    }   
 }

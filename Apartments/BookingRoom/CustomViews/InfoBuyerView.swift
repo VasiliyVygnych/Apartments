@@ -17,7 +17,7 @@ class InfoBuyerView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
-        label.font = .sFProDisplay(ofSize: 25,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_25),
                                    weight: .regular)
         label.text = Constants.Text.infoBuyerLabel
         return label
@@ -28,7 +28,7 @@ class InfoBuyerView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = UIColor(named: "textGrey")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .light)
         label.text = Constants.Text.orderLabel
         return label
@@ -37,22 +37,22 @@ class InfoBuyerView: UIView {
    private var numberTexField: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         textField.placeholder = Constants.Text.numberTexField
         textField.borderStyle = .roundedRect
         textField.keyboardType = .numberPad
-        textField.font = .sFProDisplay(ofSize:
-                                        17, weight: .light)
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
+                                       weight: .light)
         textField.backgroundColor = UIColor(named: "backgroundGray")
         return textField
     }()
     private var emailTexField: UITextField = {
        let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.layer.cornerRadius = 10
+        textField.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         textField.borderStyle = .roundedRect
         textField.keyboardType = .emailAddress
-        textField.font = .sFProDisplay(ofSize: 17,
+        textField.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                        weight: .light)
         textField.placeholder = Constants.Text.emailTexField
         textField.backgroundColor = UIColor(named: "backgroundGray")
@@ -65,7 +65,7 @@ class InfoBuyerView: UIView {
         setupeConstraint()
         setupeTextfield()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -91,22 +91,22 @@ private extension InfoBuyerView {
             make.top.equalTo(16)
             make.height.equalTo(26)
             make.width.equalTo(343)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         orderLabel.snp.makeConstraints { make in
             make.top.equalTo(182)
             make.height.equalTo(34)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         numberTexField.snp.makeConstraints { make in
             make.top.equalTo(62)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
         emailTexField.snp.makeConstraints { make in
             make.top.equalTo(122)
             make.height.equalTo(52)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.leading.trailing.equalToSuperview().inset(Integers.Constraints.sideMargins)
         }
     }
 }

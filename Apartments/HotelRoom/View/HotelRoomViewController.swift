@@ -16,11 +16,10 @@ class HotelRoomViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-    
 //MARK: - navigationTitle
     private var navigationTitle: UILabel = {
         let label = UILabel()
-        label.font = .sFProDisplay(ofSize: 13,
+        label.font = .sFProDisplay(ofSize: 12,
                                    weight: .bold)
         return label
     }()
@@ -35,9 +34,9 @@ class HotelRoomViewController: UITableViewController {
     }
 //MARK: - setupeTableView
     private func setupeTableView() {
-        tableView.rowHeight = 539
+        tableView.rowHeight = 560
         tableView.separatorColor = .clear
-        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(TableViewCell.self,
                            forCellReuseIdentifier: "viewCell")
     }

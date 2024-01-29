@@ -66,7 +66,9 @@ extension UIFont {
         case light = "SFProDisplay-Light"
         case regular = "SFProDisplay-Regular"
     }
-    class func sFProDisplay(ofSize fonsize: CGFloat, weight: SFProDisplay) -> UIFont {
-        return UIFont(name: weight.rawValue, size: fonsize) ?? .systemFont(ofSize: fonsize)
+    class func sFProDisplay(ofSize fonsize: CGFloat,
+                            weight: SFProDisplay) -> UIFont {
+        return UIFont(name: weight.rawValue,
+                      size: fonsize) ?? .systemFont(ofSize: fonsize)
     }
 }

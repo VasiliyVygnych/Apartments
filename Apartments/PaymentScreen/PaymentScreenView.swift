@@ -37,7 +37,7 @@ class PaymentScreenView: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.textAlignment = .center
-        label.font = .sFProDisplay(ofSize: 25,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_25),
                                    weight: .regular)
         label.text = Constants.Text.acceptedLabdel
         return label
@@ -48,7 +48,7 @@ class PaymentScreenView: UIViewController {
         label.textColor = UIColor(named: "textGrey")
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .light)
         label.text = Constants.Text.infoLabel
         return label
@@ -62,7 +62,7 @@ class PaymentScreenView: UIViewController {
         button.setTitleColor(.white,
                              for: .normal)
         button.backgroundColor = UIColor(named: "primaryButtons")
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         return button
     }()
 //MARK: - viewDidLoad
@@ -136,7 +136,8 @@ class PaymentScreenView: UIViewController {
         }
         nextScreenButton.snp.makeConstraints { make in
             make.top.equalTo(conteinerButton.snp.top).inset(10)
-            make.width.equalTo(385)
+            make.width.equalToSuperview().inset(16)
+            make.left.equalTo(16)
             make.height.equalTo(48)
             make.centerX.equalToSuperview()
         }

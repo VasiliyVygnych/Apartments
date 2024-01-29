@@ -6,17 +6,39 @@
 //
 import Foundation
 
+enum Integers {
+    enum Constraints {
+        static let sideMargins = 16
+    }
+    enum FontSize {
+        static let size_14 = 14
+        static let size_16 = 16
+        static let size_22 = 22
+        static let size_25 = 25
+        static let size_30 = 30
+    }
+    enum CornerRadius {
+        static let size_5 = 5
+        static let size_7 = 7
+        static let size_10 = 10
+        static let size_12 = 12
+        static let size_15 = 15
+    }
+}
+
 enum Constants {
     enum Text {
 //MARK: - HotelViewControlle
         static let firstTitle: String = "Удобства".localized()
         static let firstSubtitle: String = "Самое необходимое".localized()
         static let secondTitle: String = "Что включено".localized()
-        static let threeTitle: String = "Что включено".localized()
+        static let threeTitle: String = "Что не включено".localized()
         static let threeSubtitle: String = "Не самое необходимое".localized()
         static let aboutHotelLabbel: String = "Об отеле".localized()
         static let nextScreenRoom: String = "К выбору номера".localized()
         static let navTitleHotel: String = "Отель".localized()
+        static let miminalPrise: String = "От".localized()
+        static let currency: String = "₽".localized()
 //MARK: - RoomViewController
         static let setupeButtonCell: String = "Выбрать номер".localized()
 //MARK: - RoomsCollectionCell

@@ -15,7 +15,7 @@ class InfoHotelView: UIView {
         let UIview = UIView()
         UIview.translatesAutoresizingMaskIntoConstraints = false
         UIview.backgroundColor = UIColor(named: "frameRating")
-        UIview.layer.cornerRadius = 5
+        UIview.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         UIview.layer.shadowOpacity = 0.2
         UIview.layer.masksToBounds = false
         UIview.layer.shadowOffset = CGSize(width: 1,
@@ -29,7 +29,7 @@ class InfoHotelView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 22,
+        label.font = .systemFont(ofSize: CGFloat(Integers.FontSize.size_22),
                                  weight: .regular)
         return label
     }()
@@ -37,7 +37,7 @@ class InfoHotelView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "primaryButtons")
-        label.font = .sFProDisplay(ofSize: 14,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
                                    weight: .regular)
         return label
     }()
@@ -45,7 +45,7 @@ class InfoHotelView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textRating")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         return label
     }()
@@ -53,7 +53,7 @@ class InfoHotelView: UIView {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textRating")
-        label.font = .sFProDisplay(ofSize: 16,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
                                    weight: .regular)
         return label
     }()
@@ -71,7 +71,7 @@ class InfoHotelView: UIView {
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -100,19 +100,19 @@ private extension InfoHotelView {
             make.top.equalTo(10)
             make.height.equalTo(29)
             make.width.equalTo(149)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         nameHotelLabbel.snp.makeConstraints { make in
             make.top.equalTo(ratingView.snp.bottom).inset(-10)
             make.height.lessThanOrEqualTo(55)
             make.width.equalTo(400)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         hotelAddressLabel.snp.makeConstraints { make in
             make.top.equalTo(nameHotelLabbel.snp.bottom).inset(-10)
             make.height.equalTo(17)
             make.width.equalTo(343)
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
         }
         raitingNameLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

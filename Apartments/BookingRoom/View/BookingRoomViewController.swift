@@ -32,7 +32,7 @@ class BookingRoomViewController: UIViewController {
        let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.layer.cornerRadius = 15
+        stack.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         stack.backgroundColor = UIColor(named: "gray")
         return stack
     }()
@@ -78,13 +78,13 @@ class BookingRoomViewController: UIViewController {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 12
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
         return view
     }()
     private var touristView: UIView = {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_10)
         view.backgroundColor = .blue
         return view
     }()
@@ -102,7 +102,7 @@ class BookingRoomViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.text = Constants.Text.labelAddTourist
-        label.font = .sFProDisplay(ofSize: 22,
+        label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_22),
                                    weight: .regular)
         return label
     }()
@@ -112,7 +112,7 @@ class BookingRoomViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitleColor(.white,
                              for: .normal)
-        button.layer.cornerRadius = 15
+        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         button.backgroundColor = UIColor(named: "primaryButtons3")
         button.isUserInteractionEnabled = false
         return button
@@ -123,7 +123,7 @@ class BookingRoomViewController: UIViewController {
         button.setBackgroundImage(UIImage(named: "plus"),
                                   for: .normal)
         button.backgroundColor = UIColor(named: "primaryButtons")
-        button.layer.cornerRadius = 6
+        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         return button
     }()
 //MARK: - viewDidLoad
@@ -286,7 +286,8 @@ class BookingRoomViewController: UIViewController {
             make.bottom.equalTo(scrollView.snp.bottom)
         }
         paymentButton.snp.makeConstraints { make in
-            make.width.equalTo(385)
+            make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
+            make.left.equalTo(Integers.Constraints.sideMargins)
             make.height.equalTo(48)
             make.bottom.equalTo(-5)
             make.centerX.equalToSuperview()
@@ -297,7 +298,7 @@ class BookingRoomViewController: UIViewController {
         }
         labelAddTourist.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.left.equalTo(16)
+            make.left.equalTo(Integers.Constraints.sideMargins)
             make.width.equalTo(380)
         }
         addNewTouristButton.snp.makeConstraints { make in

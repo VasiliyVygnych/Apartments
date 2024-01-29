@@ -14,6 +14,8 @@
 "About the hotel" = "Об отеле" ;
 "Choose a number" = "К выбору номера" ;
 "Hotel" = "Отель" ;
+"From" = "От" ;
+"$" = "₽" ;
 //MARK: - RoomViewController
 "Choose a number" = "Выбрать номер" ;
 //MARK: - RoomsCollectionCell

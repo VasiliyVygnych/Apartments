@@ -10,10 +10,13 @@
 "Удобства" = "Conveniences" ;
 "Самое необходимое" = "The most necessary" ;
 "Что включено" = "What is included" ;
+"Что не включено" = "What is not included" ;
 "Не самое необходимое" = "Not the most necessary" ;
 "Об отеле" = "About the hotel" ;
 "К выбору номера" = "Choose a number" ;
 "Отель" = "Hotel" ;
+"От" = "From" ;
+"₽" = "$" ;
 //MARK: - RoomViewController
 "Выбрать номер" = "Choose a number" ;
 //MARK: - RoomsCollectionCell

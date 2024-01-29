@@ -16,12 +16,12 @@ class CollectionImageRoom: UIView {
             collectionView.reloadData()
         }
     }
-    
 //MARK: - collectionView & FlowLayout
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: 400, height: 257)
+        layout.itemSize = .init(width: 400,
+                                height: 257)
         layout.minimumLineSpacing = 0
         return layout
     }()
@@ -30,34 +30,29 @@ class CollectionImageRoom: UIView {
                                               collectionViewLayout: self.layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.contentMode = .scaleAspectFit
-        collectionView.layer.cornerRadius = 15
+        collectionView.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.isPagingEnabled = true
         return collectionView
     }()
-    
-    
-    
 //MARK: - UIPageControl
      var padeControl: UIPageControl = {
        let page = UIPageControl()
         page.translatesAutoresizingMaskIntoConstraints = false
-        page.currentPage = 0
-        page.hidesForSinglePage = true
-        page.layer.cornerRadius = 5
+        page.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_5)
         page.currentPageIndicatorTintColor = .black
-        page.backgroundColor = UIColor(named: "textGrey")
+        page.pageIndicatorTintColor = .lightGray
+        page.backgroundColor = .white
+        page.hidesForSinglePage = true
         return page
     }()
-    
-    
 //MARK: - init
     init() {
         super.init(frame: .zero)
         initialization()
         setupeConstraint()
         self.backgroundColor = .white
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -79,13 +74,15 @@ private extension CollectionImageRoom {
             make.edges.equalToSuperview()
         }
         padeControl.snp.makeConstraints { make in
-            make.top.equalTo(225)
+            make.top.equalTo(230)
             make.centerX.equalToSuperview()
+            make.height.equalTo(17)
         }
     }
 }
-
-extension CollectionImageRoom: UICollectionViewDataSource, UICollectionViewDelegate {
+extension CollectionImageRoom: UICollectionViewDataSource,
+                                UICollectionViewDelegate,
+                                UICollectionViewDelegateFlowLayout {
 //MARK: - numberOfItemsInSection
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -100,11 +97,6 @@ extension CollectionImageRoom: UICollectionViewDataSource, UICollectionViewDeleg
         let url = URL(string: images[indexPath.row])
         cell.imageView.sd_setImage(with: url,
                                    placeholderImage: UIImage(named: "AppIcon"))
-        
-        
-        
-        
-        
         padeControl.numberOfPages = model?.imageUrls.count ?? 0
         return cell
     }
@@ -113,5 +105,14 @@ extension CollectionImageRoom: UICollectionViewDataSource, UICollectionViewDeleg
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         padeControl.currentPage = indexPath.row
+    }
+//MARK: - sizeForItemAt
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = collectionView.frame.height
+        let width  = collectionView.frame.width
+        return CGSize(width: width,
+                      height: height)
     }
 }

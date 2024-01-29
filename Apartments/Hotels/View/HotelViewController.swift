@@ -26,7 +26,7 @@ class HotelViewController: UITableViewController {
 //MARK: - setupeTableView
     private func setupeTableView() {
         tableView.backgroundColor = .white
-        tableView.rowHeight = 1050
+        tableView.rowHeight = 1045
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorColor = .clear
         tableView.register(TableViewHotelCell.self,
