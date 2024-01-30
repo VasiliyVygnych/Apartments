@@ -20,8 +20,6 @@ class CollectionView: UIView {
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: 343,
-                                height: 257)
         layout.minimumLineSpacing = 0
         return layout
     }()

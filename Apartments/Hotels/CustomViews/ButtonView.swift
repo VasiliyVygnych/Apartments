@@ -147,7 +147,6 @@ class ButtonView: UIView {
         setupeButton()
         self.backgroundColor = .white
         self.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_12)
-        self.isUserInteractionEnabled = true
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

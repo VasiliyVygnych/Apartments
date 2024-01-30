@@ -53,6 +53,7 @@
 		459B7E9B2B4F20CB00667636 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B7E9A2B4F20CB00667636 /* ResultView.swift */; };
 		459B7E9E2B4F3C9400667636 /* PaymentScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B7E9D2B4F3C9400667636 /* PaymentScreenView.swift */; };
 		459B7EA12B4F3E9C00667636 /* Extansions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459B7EA02B4F3E9C00667636 /* Extansions.swift */; };
+		45B4516C2B690EF4003269C4 /* CellButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45B4516B2B690EF4003269C4 /* CellButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		459B7E9A2B4F20CB00667636 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		459B7E9D2B4F3C9400667636 /* PaymentScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentScreenView.swift; sourceTree = "<group>"; };
 		459B7EA02B4F3E9C00667636 /* Extansions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extansions.swift; sourceTree = "<group>"; };
+		45B4516B2B690EF4003269C4 /* CellButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellButtonView.swift; sourceTree = "<group>"; };
 		715BA15BD4684AB22A605149 /* Pods_Apartments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Apartments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77A056E6666D984918A51722 /* Pods-Apartments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apartments.debug.xcconfig"; path = "Target Support Files/Pods-Apartments/Pods-Apartments.debug.xcconfig"; sourceTree = "<group>"; };
 		9CD66EE58E2885588A151B31 /* Pods-Apartments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Apartments.release.xcconfig"; path = "Target Support Files/Pods-Apartments/Pods-Apartments.release.xcconfig"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				459B7E682B4EA34E00667636 /* CollectionView.swift */,
 				459B7E6A2B4EA39100667636 /* ImageCollectionView.swift */,
 				459B7E6C2B4EA3B600667636 /* ButtonView.swift */,
+				45B4516B2B690EF4003269C4 /* CellButtonView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -653,6 +656,7 @@
 				459B7E5E2B4E926C00667636 /* HotelPresenter.swift in Sources */,
 				459B7E612B4E980300667636 /* TableViewHotelCell.swift in Sources */,
 				456859942B5EA64C0040CD14 /* Parser.swift in Sources */,
+				45B4516C2B690EF4003269C4 /* CellButtonView.swift in Sources */,
 				459B7E822B4EE55D00667636 /* CollectionImageRoom.swift in Sources */,
 				459B7E7A2B4ED97400667636 /* HotelRoomPresenter.swift in Sources */,
 				459B7E8C2B4F139D00667636 /* BookingRoomInteractor.swift in Sources */,

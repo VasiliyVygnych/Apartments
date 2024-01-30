@@ -10,6 +10,8 @@ import SnapKit
 
 class TableViewCell: UITableViewCell {
     
+    var presenter: HotelRoomPresenterProtocol?
+    
     var model: Room? {
         didSet {
             collectionView.reloadData()
@@ -97,7 +99,6 @@ class TableViewCell: UITableViewCell {
                             for: .normal)
        button.backgroundColor = UIColor(named: "primaryButtons")
        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
-       button.isUserInteractionEnabled = false
        return button
    }()
 //MARK: - UIView
@@ -128,6 +129,9 @@ class TableViewCell: UITableViewCell {
         moreInfoBotton.addTarget(self,
                                  action: #selector(didTap),
                                  for: .touchUpInside)
+        cellButton.addTarget(self,
+                                 action: #selector(choosRoom),
+                                 for: .touchUpInside)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -150,6 +154,26 @@ class TableViewCell: UITableViewCell {
         }, completion: { finished in
             print("tap moreInfoRoom")
         })
+    }
+//MARK: - @objc func choosRoom
+    @objc func choosRoom(sender: UIButton) {
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            self.cellButton.transform = CGAffineTransform(scaleX: 0.75,
+                                                          y: 0.75)
+        }, completion: { finished in
+            guard let model = self.model else { return }
+            self.presenter?.goBookingRoomView(model: model)
+        })
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            self.cellButton.transform = CGAffineTransform(scaleX: 1,
+                                                          y: 1)
+        }, completion: nil)
     }
 //MARK: - сonfigures
     func сonfigures(model: Room) {

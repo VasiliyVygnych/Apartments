@@ -15,7 +15,7 @@ class TableViewHotelCell: UITableViewCell {
             collectionView.reloadData()
         }
     }
-//MARK: - UIView
+//MARK: - custom UIView
     var hotelPreviewView: HotelPreviewView = {
         let view = HotelPreviewView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -27,6 +27,13 @@ class TableViewHotelCell: UITableViewCell {
         view.backgroundColor = UIColor(named: "backgroundGray")
         return view
     }()
+    var cellButton: CellButtonView = {
+        let view = CellButtonView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+//MARK: - UIView
     private var separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -37,12 +44,14 @@ class TableViewHotelCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.isUserInteractionEnabled = true
         return view
     }()
     var contentViewButton: UIView = {
         let view = UIView()
+        view.isUserInteractionEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = .green
         view.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
         return view
     }()
@@ -97,18 +106,6 @@ class TableViewHotelCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
-//MARK: - UIButton
-     var cellButton: UIButton = {
-       let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-         button.setTitle(Constants.Text.nextScreenRoom,
-                        for: .normal)
-        button.setTitleColor(.white,
-                             for: .normal)
-        button.backgroundColor = UIColor(named: "primaryButtons")
-        button.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
-        return button
-    }()
 //MARK: - init
     override init(style: UITableViewCell.CellStyle,
                   reuseIdentifier: String?) {
@@ -116,7 +113,6 @@ class TableViewHotelCell: UITableViewCell {
                    reuseIdentifier: reuseIdentifier)
         setupeView()
         setupeConstraint()
-        contentView.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_15)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -129,9 +125,9 @@ private extension TableViewHotelCell {
         contentView.addSubview(hotelPreviewView)
         contentView.addSubview(infoHotelView)
         contentView.addSubview(buttonView)
-        contentView.addSubview(conteinerView)
+        contentView.addSubview(contentViewButton)
+        contentViewButton.addSubview(conteinerView)
         conteinerView.addSubview(separatorView)
-        conteinerView.addSubview(contentViewButton)
         contentViewButton.addSubview(cellButton)
         infoHotelView.addSubview(collectionView)
         infoHotelView.addSubview(aboutHotelLabbel)
@@ -183,16 +179,12 @@ private extension TableViewHotelCell {
             make.height.equalTo(20)
         }
         contentViewButton.snp.makeConstraints { make in
-            make.top.equalToSuperview()
+            make.top.equalTo(infoHotelView.snp.bottom).inset(-5)
             make.width.equalToSuperview()
             make.height.equalTo(70)
         }
         cellButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
-            make.left.equalTo(Integers.Constraints.sideMargins)
-            make.height.equalTo(48)
-            make.centerX.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
 }

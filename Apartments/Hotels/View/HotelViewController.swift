@@ -31,6 +31,7 @@ class HotelViewController: UITableViewController {
         tableView.separatorColor = .clear
         tableView.register(TableViewHotelCell.self,
                            forCellReuseIdentifier: "cell")
+        tableView.allowsSelection = false
     }
 //MARK: - numberOfRowsInSection
     override func tableView(_ tableView: UITableView,
@@ -44,31 +45,12 @@ class HotelViewController: UITableViewController {
                                                   for: indexPath) as? TableViewHotelCell
         guard let model = model else { return UITableViewCell() }
         cell?.model = model
+        cell?.cellButton.presenter = presenter
+        cell?.cellButton.model = model
+        cell?.cellButton.button.tag = indexPath.row
         cell?.infoHotelLabbel.text = model.aboutTheHotel.description
         cell?.hotelPreviewView.dataSet(model: model)
         return cell ?? UITableViewCell()
-    }
-//MARK: - didSelectRowAt
-    override func tableView(_ tableView: UITableView,
-                            didSelectRowAt indexPath: IndexPath) {
-        let cell = self.tableView.cellForRow(at: indexPath)
-        guard let model = model else { return }
-        UIView.animate(withDuration: 0.4,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
-            cell?.transform = CGAffineTransform(scaleX: 0.75,
-                                                y: 0.75)
-        }, completion: { finished in
-            self.presenter?.goHotrlRoomViews(model: model)
-        })
-        UIView.animate(withDuration: 0.4,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
-            cell?.transform = CGAffineTransform(scaleX: 1,
-                                                y: 1)
-        }, completion: nil)
     }
 }
 //MARK: - extension HotelViewProtocol

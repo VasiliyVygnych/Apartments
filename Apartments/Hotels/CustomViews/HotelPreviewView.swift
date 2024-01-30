@@ -16,6 +16,12 @@ class HotelPreviewView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    private var topView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
     private var ratingView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -121,6 +127,7 @@ class HotelPreviewView: UIView {
 //MARK: - extension
 private extension HotelPreviewView {
     func initialization() {
+        self.addSubview(topView)
         self.addSubview(collectionView)
         self.addSubview(ratingView)
         ratingView.addSubview(star)
@@ -140,6 +147,11 @@ private extension HotelPreviewView {
     }
 //MARK: - setupeConstraint
     func setupeConstraint() {
+        topView.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.width.equalToSuperview()
+            make.height.equalTo(10)
+        }
         collectionView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(30)
             make.width.equalToSuperview().inset(Integers.Constraints.sideMargins)
@@ -189,3 +201,4 @@ private extension HotelPreviewView {
         }
     }
 }
+

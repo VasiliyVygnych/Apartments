@@ -39,6 +39,7 @@ class HotelRoomViewController: UITableViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.register(TableViewCell.self,
                            forCellReuseIdentifier: "viewCell")
+        tableView.allowsSelection = false
     }
 //MARK: - setupeBackButoon
     private func setupeBackButoon() {
@@ -65,32 +66,12 @@ class HotelRoomViewController: UITableViewController {
                                                        for: indexPath) as! TableViewCell
         guard let model = model?[indexPath.row] else { return  UITableViewCell() }
         cell.model = model
+        cell.cellButton.tag = indexPath.row
+        cell.presenter = presenter
         cell.collectionImageRoom.model = model
         cell.сonfigures(model: model)
         return cell
-    }
-//MARK: - didSelectRowAt
-    override func tableView(_ tableView: UITableView,
-                            didSelectRowAt indexPath: IndexPath) {
-        guard let model = model?[indexPath.row] else { return }
-        let cell = self.tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.4,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
-            cell?.transform = CGAffineTransform(scaleX: 0.75,
-                                                y: 0.75)
-        }, completion: { finished in
-            self.presenter?.goBookingRoomView(model: model)
-        })
-        UIView.animate(withDuration: 0.4,
-                       delay: 0,
-                       options: .curveEaseOut,
-                       animations: {
-            cell?.transform = CGAffineTransform(scaleX: 1,
-                                                y: 1)
-        }, completion: nil)
-    }
+    } 
 }
 //MARK: - extension HotelRoomViewProtocol
 extension HotelRoomViewController: HotelRoomViewProtocol {
