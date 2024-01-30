@@ -75,7 +75,7 @@ class TableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: self.layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "gray")
+        collectionView.backgroundColor = .white
         collectionView.contentMode = .scaleAspectFit
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.layer.cornerRadius = 7
@@ -157,7 +157,7 @@ class TableViewCell: UITableViewCell {
     }
 //MARK: - @objc func choosRoom
     @objc func choosRoom(sender: UIButton) {
-        UIView.animate(withDuration: 0.4,
+        UIView.animate(withDuration: 0.3,
                        delay: 0,
                        options: .curveEaseOut,
                        animations: {

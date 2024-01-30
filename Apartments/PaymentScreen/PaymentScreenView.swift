@@ -94,7 +94,22 @@ class PaymentScreenView: UIViewController {
                                    for: .touchUpInside)
     }
     @objc func nextScreen() {
-        navigationController?.popToRootViewController(animated: true)
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            self.nextScreenButton.transform = CGAffineTransform(scaleX: 0.75,
+                                                                y: 0.75)
+        }, completion: { finished in
+            self.navigationController?.popToRootViewController(animated: true)
+        })
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       options: .curveEaseOut,
+                       animations: {
+            self.nextScreenButton.transform = CGAffineTransform(scaleX: 1,
+                                                                y: 1)
+        }, completion: nil)
     }
 //MARK: - setupeView
     private func setupeView() {

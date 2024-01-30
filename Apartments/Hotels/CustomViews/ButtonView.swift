@@ -48,7 +48,7 @@ class ButtonView: UIView {
         label.text = Constants.Text.firstTitle
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
-                                   weight: .light)
+                                   weight: .regular)
         return label
     }()
     private var firstSubtitle: UILabel = {
@@ -56,7 +56,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
-                                   weight: .light)
+                                   weight: .regular)
         label.text = Constants.Text.firstSubtitle
         return label
     }()
@@ -66,7 +66,7 @@ class ButtonView: UIView {
         label.text = Constants.Text.secondTitle
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
-                                   weight: .light)
+                                   weight: .regular)
         return label
     }()
     private var secondSubtitle: UILabel = {
@@ -75,7 +75,7 @@ class ButtonView: UIView {
         label.text = Constants.Text.firstSubtitle
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
-                                   weight: .light)
+                                   weight: .regular)
         return label
     }()
     private var threeTitle: UILabel = {
@@ -83,7 +83,7 @@ class ButtonView: UIView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_16),
-                                   weight: .light)
+                                   weight: .regular)
         label.text = Constants.Text.threeTitle
         return label
     }()
@@ -93,7 +93,7 @@ class ButtonView: UIView {
         label.text = Constants.Text.threeSubtitle
         label.textColor = UIColor(named: "textGrey")
         label.font = .sFProDisplay(ofSize: CGFloat(Integers.FontSize.size_14),
-                                   weight: .light)
+                                   weight: .regular)
         return label
     }()
 //MARK: - UIImageView

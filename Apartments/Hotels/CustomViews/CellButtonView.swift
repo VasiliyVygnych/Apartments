@@ -54,7 +54,7 @@ class CellButtonView: UIView {
     }
 //MARK: - @objc func hotelRoom
     @objc func hotelRoom(sender: UIButton) {
-        UIView.animate(withDuration: 0.4,
+        UIView.animate(withDuration: 0.3,
                        delay: 0,
                        options: .curveEaseOut,
                        animations: {

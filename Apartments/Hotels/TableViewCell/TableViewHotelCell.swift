@@ -100,8 +100,7 @@ class TableViewHotelCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: self.layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor(named: "backgroundGray")
-        collectionView.contentMode = .scaleAspectFit
+        collectionView.backgroundColor = .white
         collectionView.layer.cornerRadius = CGFloat(Integers.CornerRadius.size_7)
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
